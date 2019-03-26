@@ -12,7 +12,7 @@ namespace AeroportLibrary
         private string _nom;
         private string _localisation;
         private string _image;
-        private char[2] _code;
+        private char[] _code = new char[2];
         #endregion
 
         #region PROPRIETE
