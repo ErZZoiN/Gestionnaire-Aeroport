@@ -23,6 +23,8 @@ namespace main
         public MainWindow()
         {
             InitializeComponent();
+            var tmp = new ProfilCompagnieAerienne();
+            tmp.Show();
         }
     }
 }

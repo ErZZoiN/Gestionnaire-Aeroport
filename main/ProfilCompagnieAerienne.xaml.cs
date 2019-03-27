@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AeroportLibrary;
 
 namespace main
 {
@@ -19,9 +20,13 @@ namespace main
     /// </summary>
     public partial class ProfilCompagnieAerienne : Window
     {
+        private CompagnieAerienne _compagnie;
+
         public ProfilCompagnieAerienne()
         {
             InitializeComponent();
         }
+
+        public CompagnieAerienne Compagnie { get => _compagnie; set => _compagnie = value; }
     }
 }

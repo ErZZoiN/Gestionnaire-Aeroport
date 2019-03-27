@@ -9,12 +9,59 @@
     <StackPanel>
         <Menu>
             <MenuItem Header="Fichier">
-                <MenuItem Header="Sauvegarder"/>
-                <MenuItem Header="Charger"/>
-                <MenuItem Header="Deconnexion"/>
+                <MenuItem Header="Sauvegarder"
+                          Name="menuSauvegarder"/>
+                <MenuItem Header="Charger"
+                          Name="menuCharger"/>
+                <MenuItem Header="Deconnexion"
+                          Name="menuDeconnexion"/>
+            </MenuItem>
+            <MenuItem Header="Outils">
+                <MenuItem Name="menuAbout"
+                          Header="About me"/>
+                <MenuItem Header="Option"
+                          Name="menuOption"/>
             </MenuItem>
         </Menu>
+        <ToolBar>
+            <Button Name="toolProgVols"
+                    Content="Programmer des vols"/>
+            <Button Name="toolLoadVols"
+                    Content="Charger vols génériques"/>
+        </ToolBar>
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="15"/>
+            </Grid.RowDefinitions>
+            <ToolBar>
+                <Label Content="TODO : Barre de recherche"/>
+            </ToolBar>
+            <DataGrid Name="volGenerique"
+                      Grid.Row="1"
+                      ItemsSource="{Binding}"/>
+            <GridSplitter Grid.Column="1"/>
+            <DataGrid Name="volProgramme"
+                      Grid.Row="1"
+                      ItemsSource="{Binding}"/>
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal">
+                <Button Name="genTransProgramme"
+                        Content="Programmer"/>
+                <Button Name="genAjouter"
+                        Content="Ajouter"/>
+                <Button Name="genModifier"
+                        Content="Modifier"/>
+                <Button Name="genSupprimer"
+                        Content="Supprimer"/>
+            </StackPanel>
+            
         </Grid>
     </StackPanel>
 </Window>
