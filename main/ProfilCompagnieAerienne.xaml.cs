@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +22,31 @@ namespace main
     public partial class ProfilCompagnieAerienne : Window
     {
         private CompagnieAerienne _compagnie;
+        private ObservableCollection<VolGenerique> _volgencol;
+        private ObservableCollection<VolPRogramme> _volprogcol;
 
         public ProfilCompagnieAerienne()
         {
             InitializeComponent();
+            volProgramme.DataContext = Volprogcol;
+            volGenerique.DataContext = Volgencol;
+            Compagnie = new CompagnieAerienne
+            {
+                Nom = "Brussels airlines",
+                Localisation = "Bruxelles",
+                Image = "",
+                Code = "BR"
+            };
         }
 
         public CompagnieAerienne Compagnie { get => _compagnie; set => _compagnie = value; }
+        public ObservableCollection<VolPRogramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
+        public ObservableCollection<VolGenerique> Volgencol { get => _volgencol; set => _volgencol = value; }
+
+        private void GenAjouter_Click(object sender, RoutedEventArgs e)
+        {
+            var mod = new ModificationVolGenerique(this);
+            mod.Show();
+        }
     }
 }

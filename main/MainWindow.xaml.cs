@@ -25,6 +25,7 @@ namespace main
             InitializeComponent();
             var tmp = new ProfilCompagnieAerienne();
             tmp.Show();
+            this.Close();
         }
     }
 }

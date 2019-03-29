@@ -14,7 +14,7 @@ namespace AeroportLibrary
         public string Nom { get => _nom; set => _nom = value; }
         public char[] Code { get => _code; set => _code = value; }
 
-        private Pays(string nom, string code)
+        public Pays(string nom, string code)
         {
             Nom = nom;
             Code = code.ToCharArray();

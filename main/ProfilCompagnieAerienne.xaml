@@ -38,7 +38,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <ToolBar>
                 <Label Content="TODO : Barre de recherche"/>
@@ -47,21 +47,35 @@
                       Grid.Row="1"
                       ItemsSource="{Binding}"/>
             <GridSplitter Grid.Column="1"/>
-            <DataGrid Name="volProgramme"
-                      Grid.Row="1"
-                      ItemsSource="{Binding}"/>
-            <StackPanel Grid.Row="1"
-                        Orientation="Horizontal">
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
                 <Button Name="genTransProgramme"
                         Content="Programmer"/>
                 <Button Name="genAjouter"
-                        Content="Ajouter"/>
+                        Content="Ajouter"
+                        Click="GenAjouter_Click"/>
                 <Button Name="genModifier"
                         Content="Modifier"/>
                 <Button Name="genSupprimer"
                         Content="Supprimer"/>
             </StackPanel>
-            
+            <ToolBar Grid.Column="2">
+                <Label Content="TODO : Barre de recherche"/>
+            </ToolBar>
+            <DataGrid Name="volProgramme"
+                      Grid.Column="2"
+                      Grid.Row="1"
+                      ItemsSource="{Binding}"/>
+            <StackPanel Grid.Row="2"
+                        Grid.Column="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Name="progRetarder"
+                        Content="Retarder"/>
+                <Button Name="progSupprimer"
+                        Content="Supprimer"/>
+            </StackPanel>
         </Grid>
     </StackPanel>
 </Window>
