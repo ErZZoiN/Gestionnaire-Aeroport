@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AeroportLibrary
 {
-    public class VolPRogramme
+    public class VolProgramme
     {
         #region VARIABLE
         private VolGenerique _vol;
@@ -21,7 +21,7 @@ namespace AeroportLibrary
         public DateTime DateArrivee { get => DateDepart.Add(Vol.Duree); } 
         #endregion
 
-        public VolPRogramme(VolGenerique vol, DateTime date)
+        public VolProgramme(VolGenerique vol, DateTime date)
         {
             Vol = vol;
             DateDepart = date;

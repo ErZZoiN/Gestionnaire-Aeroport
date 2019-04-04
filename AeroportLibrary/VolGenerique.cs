@@ -25,7 +25,14 @@ namespace AeroportLibrary
         public CompagnieAerienne Compagnie { get => _compagnie; set => _compagnie = value; }
         public int Numero { get => _numero; set => _numero = value; }
         public string Identifiant { get => Compagnie.Code.ToString() + Numero.ToString(); }
-        public TimeSpan Duree { get => HeureArrivee - HeureDepart; }
+        public TimeSpan Duree { get
+                { TimeSpan tmp = new TimeSpan((AeroportDepart.Pays.FuseauGMT - AeroportArrivee.Pays.FuseauGMT), 0, 0);
+                if (HeureDepart < HeureArrivee)
+                    return (HeureArrivee - HeureDepart) - tmp;
+                else
+                    return (HeureArrivee - HeureDepart) - tmp + (new TimeSpan(24, 0, 0));
+            }
+            }
         #endregion
     }
 }

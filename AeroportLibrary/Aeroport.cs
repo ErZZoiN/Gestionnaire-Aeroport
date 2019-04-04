@@ -12,7 +12,6 @@ namespace AeroportLibrary
         #region VARIABLE
         private string _code;
         private string _ville;
-        private string _nomination;
         private Pays _pays;
         #endregion
 
@@ -39,6 +38,13 @@ namespace AeroportLibrary
         public static Aeroport BRUXELLES = new Aeroport("BRU", "Bruxelles", Pays.BELGIQUE);
         public static Aeroport CHARLEROI = new Aeroport("CRL", "Charleroi", Pays.BELGIQUE);
         public static Aeroport KENNEDY = new Aeroport("JFK", "New York", Pays.ETATSUNIS);
-        public static Aeroport[] LISTEAEROPORT = { BRUXELLES, CHARLEROI, KENNEDY };
+        public static Aeroport BERLIN = new Aeroport("BER", "Berlin", Pays.ALLEMAGNE);
+        public static Aeroport TANGER = new Aeroport("TNG", "Tanger", Pays.MAROC);
+        public static Aeroport MARRAKESH = new Aeroport("RAK", "Marrakesh", Pays.MAROC);
+        public static Aeroport ORLY = new Aeroport("ORY", "Paris", Pays.FRANCE);
+        public static Aeroport MARSEILLE = new Aeroport("MRS", "Marseille", Pays.FRANCE);
+        public static Aeroport MADRID = new Aeroport("MAD", "Madrid", Pays.ESPAGNE);
+        public static Aeroport BARCELONE = new Aeroport("BCN", "Barcelone", Pays.ESPAGNE);
+        public static Aeroport[] LISTEAEROPORT = { BRUXELLES, CHARLEROI, KENNEDY, BERLIN, TANGER, MARRAKESH, ORLY, MARSEILLE, MADRID, BARCELONE };
     }
 }

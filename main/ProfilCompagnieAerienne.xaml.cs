@@ -23,10 +23,12 @@ namespace main
     {
         private CompagnieAerienne _compagnie;
         private ObservableCollection<VolGenerique> _volgencol;
-        private ObservableCollection<VolPRogramme> _volprogcol;
+        private ObservableCollection<VolProgramme> _volprogcol;
 
         public ProfilCompagnieAerienne()
         {
+            Volgencol = new ObservableCollection<VolGenerique>();
+            Volprogcol = new ObservableCollection<VolProgramme>();
             InitializeComponent();
             volProgramme.DataContext = Volprogcol;
             volGenerique.DataContext = Volgencol;
@@ -40,7 +42,7 @@ namespace main
         }
 
         public CompagnieAerienne Compagnie { get => _compagnie; set => _compagnie = value; }
-        public ObservableCollection<VolPRogramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
+        public ObservableCollection<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
         public ObservableCollection<VolGenerique> Volgencol { get => _volgencol; set => _volgencol = value; }
 
         private void GenAjouter_Click(object sender, RoutedEventArgs e)

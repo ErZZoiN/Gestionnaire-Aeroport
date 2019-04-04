@@ -26,6 +26,11 @@ namespace main
         private ProfilCompagnieAerienne _fenetreprincipale;
         private ObservableCollection<Aeroport> _listeAeroportObs = new ObservableCollection<Aeroport>();
 
+        public bool Ajout { get => _ajout; set => _ajout = value; }
+        public VolGenerique Vol { get => _vol; set => _vol = value; }
+        public ProfilCompagnieAerienne Fenetreprincipale { get => _fenetreprincipale; set => _fenetreprincipale = value; }
+        public ObservableCollection<Aeroport> ListeAeroportObs { get => _listeAeroportObs; set => _listeAeroportObs = value; }
+
         public ModificationVolGenerique(ProfilCompagnieAerienne win)
         {
             Ajout = true;
@@ -36,6 +41,7 @@ namespace main
             code.Content = win.Compagnie.Code;
             numero.IsReadOnly = false;
             aerodep.DataContext = ListeAeroportObs;
+            aeroarr.DataContext = ListeAeroportObs;
         }
 
         public ModificationVolGenerique(ProfilCompagnieAerienne win, VolGenerique vol)
@@ -43,26 +49,49 @@ namespace main
             Ajout = false;
             Vol = vol;
             Fenetreprincipale = win;
+            foreach (Aeroport a in Aeroport.LISTEAEROPORT)
+                ListeAeroportObs.Add(a);
             InitializeComponent();
             titre.Content = "Modification d'un vol générique";
             code.Content = Vol.Compagnie.Code;
+            aerodep.DataContext = ListeAeroportObs;
+            aeroarr.DataContext = ListeAeroportObs;
         }
-
-        public bool Ajout { get => _ajout; set => _ajout = value; }
-        public VolGenerique Vol { get => _vol; set => _vol = value; }
-        public ProfilCompagnieAerienne Fenetreprincipale { get => _fenetreprincipale; set => _fenetreprincipale = value; }
-        public ObservableCollection<Aeroport> ListeAeroportObs { get => _listeAeroportObs; set => _listeAeroportObs = value; }
 
         private void Appliquer_Click(object sender, RoutedEventArgs e)
         {
-            if(Ajout)
+            if (Ajout)
             {
                 Fenetreprincipale.Volgencol.Add(new VolGenerique
                 {
                     Numero = Int32.Parse(numero.Text),
                     Compagnie = Fenetreprincipale.Compagnie,
+                    AeroportDepart = (Aeroport)aeroarr.SelectedItem,
+                    AeroportArrivee = (Aeroport)aerodep.SelectedItem,
+                    HeureArrivee = heurearr.Value.Value.TimeOfDay,
+                    HeureDepart = heuredep.Value.Value.TimeOfDay
                 });
             }
+            else
+            {
+                Vol.Numero = Int32.Parse(numero.Text);
+                Vol.Compagnie = Fenetreprincipale.Compagnie;
+                Vol.AeroportDepart = (Aeroport)aeroarr.SelectedItem;
+                Vol.AeroportArrivee = (Aeroport)aerodep.SelectedItem;
+                Vol.HeureArrivee = heurearr.Value.Value.TimeOfDay;
+                Vol.HeureDepart = heuredep.Value.Value.TimeOfDay;
+            }
+        }
+
+        private void Valider_Click(object sender, RoutedEventArgs e)
+        {
+            Appliquer_Click(sender, e);
+            Close();
+        }
+
+        private void Annuler_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

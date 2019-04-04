@@ -54,13 +54,14 @@
         <Label Content="Aéroport d'arrivée :"
                Grid.Row="3"/>
         <ComboBox x:Name="aeroarr"
+                  ItemsSource="{Binding}"
                   Grid.Row="3"
                   Grid.Column="1">
-            <!--<ComboBox.ItemTemplate>
+            <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <Label Content="{Binding Path=Nomination}"/>
+                    <Label Content="{Binding Path=Nomination}" Height="30"/>
                 </DataTemplate>
-            </ComboBox.ItemTemplate>-->
+            </ComboBox.ItemTemplate>
         </ComboBox>
         <Label Content="Heure de départ :"
                Grid.Row="4"/>
@@ -77,9 +78,11 @@
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
             <Button x:Name="valider"
-                    Content="Valider"/>
+                    Content="Valider"
+                    Click="Valider_Click"/>
             <Button x:Name="Annuler"
-                    Content="Annuler"/>
+                    Content="Annuler"
+                    Click="Annuler_Click"/>
             <Button x:Name="Appliquer"
                     Content="Appliquer"
                     Click="Appliquer_Click"/>

@@ -24,34 +24,45 @@
             </MenuItem>
         </Menu>
         <ToolBar>
-            <Button Name="toolProgVols"
-                    Content="Programmer des vols"/>
             <Button Name="toolLoadVols"
                     Content="Charger vols génériques"/>
         </ToolBar>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="4"/>
+                <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
             <ToolBar>
                 <Label Content="TODO : Barre de recherche"/>
             </ToolBar>
             <DataGrid Name="volGenerique"
                       Grid.Row="1"
-                      ItemsSource="{Binding}"/>
-            <GridSplitter Grid.Column="1"/>
+                      ItemsSource="{Binding}"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Numéro de vol" FontWeight="Bold" Binding="{Binding Path=Identifiant}"/>
+                    <DataGridTextColumn Header="Départ" FontWeight="Bold" Binding="{Binding Path=AeroportDepart.Nomination}"/>
+                    <DataGridTextColumn Header="Arrivée" FontWeight="Bold" Binding="{Binding Path=AeroportArrivee.Nomination}"/>
+                    <DataGridTextColumn Header="Heure de départ" Binding="{Binding Path=HeureDepart}"/>
+                    <DataGridTextColumn Header="Heure d'arrivée" Binding="{Binding Path=HeureArrivee}"/>
+                    <DataGridTextColumn Header="Durée" Binding="{Binding Path=Duree}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Grid.Column="1"
+                    Name="programmer"
+                    Content="=>"
+                    Grid.RowSpan="3"
+                    Height="20"
+                    VerticalAlignment="Center"/>
             <StackPanel Grid.Row="2"
                         Orientation="Horizontal"
-                        HorizontalAlignment="Center">
-                <Button Name="genTransProgramme"
-                        Content="Programmer"/>
+                        HorizontalAlignment="Left">
                 <Button Name="genAjouter"
                         Content="Ajouter"
                         Click="GenAjouter_Click"/>
@@ -60,6 +71,9 @@
                 <Button Name="genSupprimer"
                         Content="Supprimer"/>
             </StackPanel>
+            <DatePicker Name="dateProg"
+                        HorizontalAlignment="Right"
+                        Grid.Row="2"/>
             <ToolBar Grid.Column="2">
                 <Label Content="TODO : Barre de recherche"/>
             </ToolBar>
