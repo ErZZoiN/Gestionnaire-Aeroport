@@ -35,6 +35,7 @@ namespace main
             InitializeComponent();
             code.Content = win.Compagnie.Code;
             numero.IsReadOnly = false;
+            aerodep.DataContext = ListeAeroportObs;
         }
 
         public ModificationVolGenerique(ProfilCompagnieAerienne win, VolGenerique vol)

@@ -20,7 +20,7 @@ namespace AeroportLibrary
         public string Code { get => _code; set => _code = value; }
         public string Ville { get => _ville; set => _ville = value; }
         public Pays Pays { get => _pays; set => _pays = value; }
-        public string Nomination { get => _nomination; set => _nomination = value; }
+        public string Nomination { get => Code + " " + Ville; }
         #endregion
 
         public Aeroport(string code, string ville, Pays pays)

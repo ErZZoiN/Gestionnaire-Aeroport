@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:main"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Connexion" Height="420.313" Width="393.751">
     <Grid>
-        
+        <Label Content="Login :" HorizontalAlignment="Left" Margin="76,43,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password :" HorizontalAlignment="Left" Margin="76,123,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="login" HorizontalAlignment="Left" Height="23" Margin="126,47,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="140"/>
+        <PasswordBox PasswordChar="#" HorizontalAlignment="Left" Margin="146,131,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Valider" Click="Button_Click" HorizontalAlignment="Left" Margin="146,278,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label Content="Code" HorizontalAlignment="Left" Margin="83,165,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="146,168,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Window>

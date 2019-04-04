@@ -42,10 +42,14 @@
         <Label Content="Aéroport de départ :"
                Grid.Row="2"/>
         <ComboBox x:Name="aerodep"
-                  ItemsSource="{Binding ListeAeroportObs}"
-                  DisplayMemberPath="Nomination"
+                  ItemsSource="{Binding}"
                   Grid.Row="2"
                   Grid.Column="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Path=Nomination}" Height="30"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
         <Label Content="Aéroport d'arrivée :"
                Grid.Row="3"/>
