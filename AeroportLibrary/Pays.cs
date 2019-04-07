@@ -23,6 +23,13 @@ namespace AeroportLibrary
             FuseauGMT = fuseau;
         }
 
+        public Pays()
+        {
+            Nom = "";
+            Code = null;
+            FuseauGMT = 0;
+        }
+
         public static Pays BELGIQUE = new Pays("Belgique", "BEL", 2);
         public static Pays ALLEMAGNE = new Pays("Allemagne", "GER", 2);
         public static Pays ETATSUNIS = new Pays("Etats-unis", "USA", -4);

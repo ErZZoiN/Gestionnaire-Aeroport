@@ -21,17 +21,15 @@ namespace main
 
         public FlightAndAirportManager()
         {
-            Mykey = Registry.CurrentUser.CreateSubKey("Subkey");
-            Mykey = Mykey.CreateSubKey("Software");
-            Mykey.CreateSubKey("HEPL");
+            Mykey = Registry.CurrentUser.CreateSubKey("Software");
+            Mykey = Mykey.CreateSubKey("HEPL");
             Confirmation = false;
         }
 
-        public bool Connexion(string code, string password)
+        public bool Connexion(string code, string password, string login)
         {
-            Mykey = Registry.CurrentUser.CreateSubKey("Subkey");
-            Mykey = Mykey.CreateSubKey("Software");
-            Mykey.CreateSubKey("HEPL");
+            Mykey = Registry.CurrentUser.CreateSubKey("Software");
+            Mykey = Mykey.CreateSubKey("HEPL");
             Confirmation = false;
 
             switch (code.Length)
@@ -45,31 +43,26 @@ namespace main
 
             Mykey = Mykey.CreateSubKey(code);
 
-            if (Mykey.GetValue(code) == null)
+            if (Mykey.GetValue(login) == null && Mykey.ValueCount < 2)
             {
-                PasswordConfirm pw = new PasswordConfirm(password, this);
-                pw.ShowDialog();
-                if (Confirmation)
-                {
-                    Mykey.SetValue(code, password);
-                    return true;
-                }
-                else return false;
+                return NouveauLog(code, password, login);
             }
-            else if((string)Mykey.GetValue(code)!=password)
+            else if ((string)Mykey.GetValue(login) != password)
             {
                 System.Windows.MessageBox.Show("Mot de passe incorrect.");
                 return false;
             }
+            else if ((string)Mykey.GetValue(login) == password)
+                return true;
 
-            return true;
+            return false;
         }
 
         public void Init()
         {
             if((string)Mykey.GetValue("Workspace") == null)
             {
-                var dialog = new System.Windows.Forms.FolderBrowserDialog();
+                var dialog = new FolderBrowserDialog();
                 dialog.ShowNewFolderButton = true;
 
                 dialog.SelectedPath = Directory.GetCurrentDirectory();
@@ -79,11 +72,34 @@ namespace main
                     Mykey.SetValue("Workspace", dialog.SelectedPath);
                 }
             }
+        }
 
-            if((CompagnieAerienne)Mykey.GetValue("Compagnie")==null)
+        public bool NouveauLog(string code,string password, string login)
+        {
+            Mykey = Registry.CurrentUser.CreateSubKey("Software");
+            Mykey = Mykey.CreateSubKey("HEPL");
+            Confirmation = false;
+
+            switch (code.Length)
             {
-                //TODO : dialogue nouvelle compagnie.
+                case 2:
+                    Mykey = Mykey.CreateSubKey("Code compagnie aerienne");
+                    break;
+                case 3:
+                    Mykey = Mykey.CreateSubKey("Code aeroport");
+                    break;
+                default: return false;
             }
+            Mykey = Mykey.CreateSubKey(code);
+
+            PasswordConfirm pw = new PasswordConfirm(password, this);
+            pw.ShowDialog();
+            if (Confirmation)
+            {
+                Mykey.SetValue(login, password);
+                return true;
+            }
+            else return false;
         }
     }
 }

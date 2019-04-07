@@ -23,22 +23,42 @@ namespace main
     public partial class MainWindow : Window
     {
         private FlightAndAirportManager manager;
+        private bool ajout;
 
         public MainWindow()
         {
+            ajout = false;
             Manager = new FlightAndAirportManager();
             InitializeComponent();
+        }
+
+        public MainWindow(CompagnieAerienne c)
+        {
+            ajout = true;
+            Manager = new FlightAndAirportManager();
+            InitializeComponent();
+            code.Text = c.Code;
+            code.IsReadOnly = true;
+            Title = "Nouveau login";
         }
 
         public FlightAndAirportManager Manager { get => manager; set => manager = value; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(Manager.Connexion(code.Text, password.Password))
+            if (!ajout)
             {
-                var fenprin = new ProfilCompagnieAerienne(Manager);
-                fenprin.Show();
-                Close();
+                if (Manager.Connexion(code.Text, password.Password, login.Text))
+                {
+                    var fenprin = new ProfilCompagnieAerienne(Manager);
+                    fenprin.Show();
+                    Close();
+                }
+            }
+            else
+            {
+                if (Manager.NouveauLog(code.Text, password.Password, login.Text))
+                    Close();
             }
         }
     }

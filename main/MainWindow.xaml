@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:main"
         mc:Ignorable="d"
-        Title="Connexion" Height="263.646" Width="385.084">
+        Title="Connexion" Height="348.979" Width="385.084">
     <Grid>
-        <Label Content="Password :" HorizontalAlignment="Left" Margin="76,123,0,0" VerticalAlignment="Top"/>
-        <PasswordBox Name="password"  PasswordChar="#" HorizontalAlignment="Left" Margin="146,131,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Valider" Click="Button_Click" HorizontalAlignment="Left" Margin="146,187,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label Content="Password :" HorizontalAlignment="Left" Margin="76,186,0,0" VerticalAlignment="Top"/>
+        <PasswordBox Name="password"  PasswordChar="#" HorizontalAlignment="Left" Margin="146,194,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Valider" Click="Button_Click" HorizontalAlignment="Left" Margin="146,244,0,0" VerticalAlignment="Top" Width="76"/>
         <Label Content="Code :" HorizontalAlignment="Left" Margin="87,65,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.535,-3.684"/>
         <TextBox HorizontalAlignment="Left" Height="20" Margin="146,68,0,0" TextWrapping="Wrap" Name="code" VerticalAlignment="Top" Width="120"/>
-
+        <Label Content="Login :" Margin="81,134,248.667,148.333"/>
+        <TextBox Name="login" Margin="146,140,112.667,147.333"/>
     </Grid>
 </Window>

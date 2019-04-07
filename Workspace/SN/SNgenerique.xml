@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<ArrayOfVolGenerique xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <VolGenerique>
+    <AeroportArrivee>
+      <Code>CRL</Code>
+      <Ville>Charleroi</Ville>
+      <Pays>
+        <Nom>Belgique</Nom>
+        <Code>
+          <char>66</char>
+          <char>69</char>
+          <char>76</char>
+        </Code>
+        <FuseauGMT>2</FuseauGMT>
+      </Pays>
+    </AeroportArrivee>
+    <AeroportDepart>
+      <Code>BER</Code>
+      <Ville>Berlin</Ville>
+      <Pays>
+        <Nom>Allemagne</Nom>
+        <Code>
+          <char>71</char>
+          <char>69</char>
+          <char>82</char>
+        </Code>
+        <FuseauGMT>2</FuseauGMT>
+      </Pays>
+    </AeroportDepart>
+    <Compagnie>
+      <Nom />
+      <Localisation />
+      <Image />
+      <Code>SN</Code>
+    </Compagnie>
+    <Numero>4545</Numero>
+    <HeureArrivee>767850000000</HeureArrivee>
+    <HeureDepart>695840000000</HeureDepart>
+  </VolGenerique>
+</ArrayOfVolGenerique>
