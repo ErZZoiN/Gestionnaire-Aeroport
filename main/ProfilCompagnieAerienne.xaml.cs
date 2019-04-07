@@ -23,17 +23,18 @@ namespace main
     /// </summary>
     public partial class ProfilCompagnieAerienne : Window
     {
+        #region VARIABLE
         private CompagnieAerienne _compagnie;
         private ListeVolGenerique _volgencol;
         private ObservableCollection<VolProgramme> _volprogcol;
         private FlightAndAirportManager _manager;
-        private string _workspace;
+        private string _workspace; 
+        #endregion
 
         public ProfilCompagnieAerienne(FlightAndAirportManager m)
         {
             Manager = m;
-            Manager.Init();
-            Workspace = (string)Manager.Mykey.GetValue("Workspace");
+            Workspace = Manager.Workspace;
 
             Volgencol = new ListeVolGenerique();
             Volprogcol = new ObservableCollection<VolProgramme>();
@@ -47,14 +48,19 @@ namespace main
                 Image = "",
                 Code = "SN"
             };
+            this.Closed += ProfilCompagnieAerienne_Closed;
         }
 
+        #region PROPRIETE
         public CompagnieAerienne Compagnie { get => _compagnie; set => _compagnie = value; }
         public ObservableCollection<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
         public ListeVolGenerique Volgencol { get => _volgencol; set => _volgencol = value; }
         public string Workspace { get => _workspace; set => _workspace = value; }
         public FlightAndAirportManager Manager { get => _manager; set => _manager = value; }
+        #endregion
 
+        #region LISTENERS
+        #region GENERIQUE DATAGRID
         private void GenAjouter_Click(object sender, RoutedEventArgs e)
         {
             var mod = new ModificationVolGenerique(this);
@@ -77,7 +83,8 @@ namespace main
         {
             if (volGenerique.SelectedItem != null)
                 ((ObservableCollection<VolGenerique>)volGenerique.DataContext).Remove((VolGenerique)volGenerique.SelectedItem);
-        }
+        } 
+        #endregion
 
         public void ModVolGen(bool ajout, VolGenerique vol)
         {
@@ -89,6 +96,13 @@ namespace main
             Volgencol.Sort();
         }
 
+        private void ProfilCompagnieAerienne_Closed(object sender, EventArgs e)
+        {
+            //Compagnie.Save(Manager.Datapath);
+            //Volgencol.Save(Manager.Workspace);
+        }
+
+        #region MENU
         private void MenuNouveauLog_Click(object sender, RoutedEventArgs e)
         {
             MainWindow nl = new MainWindow(Compagnie);
@@ -105,8 +119,13 @@ namespace main
         private void MenuSauvegarder_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new SaveFileDialog();
+            dialog.InitialDirectory = Workspace;
+            Console.WriteLine(Workspace);
+            Console.WriteLine("COUCUO");
+            dialog.AddExtension = true;
+            dialog.DefaultExt = ".xml";
 
-            if(dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 Volgencol.Save(dialog.FileName);
             }
@@ -115,11 +134,14 @@ namespace main
         private void MenuCharger_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog();
+            dialog.InitialDirectory = Workspace;
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 Volgencol.Load(dialog.FileName);
             }
-        }
+        }  
+        #endregion
+        #endregion
     }
 }

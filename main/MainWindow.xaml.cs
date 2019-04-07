@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AeroportLibrary;
+using System.IO;
 
 namespace main
 {
@@ -50,6 +51,35 @@ namespace main
             {
                 if (Manager.Connexion(code.Text, password.Password, login.Text))
                 {
+                    Manager.Init(code.Text);
+                    Manager.Mykey = Registry.CurrentUser.CreateSubKey("Software");
+                    Manager.Mykey = Manager.Mykey.CreateSubKey("HEPL");
+                    CompagnieAerienne comp = new CompagnieAerienne();
+                    switch (code.Text.Length)
+                    {
+                        case 2:
+                            Manager.Mykey = Manager.Mykey.CreateSubKey("Code compagnie aerienne");
+                            if (Manager.Mykey.GetSubKeyNames().Contains<string>(code.Text))
+                            {
+                                Manager.Mykey = Registry.CurrentUser.CreateSubKey("Software");
+                                Manager.Mykey = Manager.Mykey.CreateSubKey("HEPL");
+                                string tmp = (string)Manager.Mykey.GetValue("Workspace");
+                                if (tmp == null)
+                                    Manager.Mykey.SetValue("Workspace",Directory.GetCurrentDirectory());
+
+                                //comp.Load(tmp);
+                            }
+                            else
+                            {
+                                comp = new CompagnieAerienne();
+                                comp.Code = code.Text;
+                            }
+                            break;
+                        case 3:
+                            Manager.Mykey = Manager.Mykey.CreateSubKey("Code aeroport");
+                            break;
+                    }
+
                     var fenprin = new ProfilCompagnieAerienne(Manager);
                     fenprin.Show();
                     Close();
