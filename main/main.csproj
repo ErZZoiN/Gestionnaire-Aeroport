@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -80,11 +81,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FlightAndAirportManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ModificationVolGenerique.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PasswordConfirm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,6 +102,9 @@
   <ItemGroup>
     <Compile Include="ModificationVolGenerique.xaml.cs">
       <DependentUpon>ModificationVolGenerique.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordConfirm.xaml.cs">
+      <DependentUpon>PasswordConfirm.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProfilCompagnieAerienne.xaml.cs">
       <DependentUpon>ProfilCompagnieAerienne.xaml</DependentUpon>

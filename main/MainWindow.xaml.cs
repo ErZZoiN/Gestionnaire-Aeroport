@@ -22,33 +22,24 @@ namespace main
     /// </summary>
     public partial class MainWindow : Window
     {
-        private RegistryKey HEPLkey;
+        private FlightAndAirportManager manager;
 
         public MainWindow()
         {
-            RegistryKey mk = Registry.CurrentUser.CreateSubKey("SubKey");
-            HEPLkey = mk.CreateSubKey("HEPL");
-
-            foreach(Aeroport a in Aeroport.LISTEAEROPORT)
-            {
-                RegistryKey temp = HEPLkey.CreateSubKey(a.Code);
-            }
-
-
-
+            Manager = new FlightAndAirportManager();
             InitializeComponent();
-        } 
+        }
+
+        public FlightAndAirportManager Manager { get => manager; set => manager = value; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            foreach(Aeroport a in Aeroport.LISTEAEROPORT)
+            if(Manager.Connexion(code.Text, password.Password))
             {
-                RegistryKey temp = HEPLkey.CreateSubKey(a.Code);
+                var fenprin = new ProfilCompagnieAerienne(Manager);
+                fenprin.Show();
+                Close();
             }
-
-            var tmp = new ProfilCompagnieAerienne();
-            tmp.Show();
-            this.Close();
         }
     }
 }
