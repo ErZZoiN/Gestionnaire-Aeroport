@@ -6,16 +6,16 @@ FONCTIONNALITES :
 
 --Création de multiples comptes par compagnie
 
-
 --Création, modification et affichage de vols génériques
 
 --Programmation de vols génériques et affichage
-
 
 --Sérialisation des compagnies, vols génériques et vols programmés (pas encore utilisé ce dernier)
 
 
 TODO :
+
+--Chargement/sauvegarde de vols génériques au format texte
 
 --Utiliser la séarialisation des vols programmés
 
@@ -26,7 +26,6 @@ TODO :
 --Options
 
 --Barres de recherches (optionnelles)
-
 
 --TOURS DE CONTRÔLE
 
