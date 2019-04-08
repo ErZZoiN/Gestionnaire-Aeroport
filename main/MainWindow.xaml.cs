@@ -63,11 +63,17 @@ namespace main
                             {
                                 Manager.Mykey = Registry.CurrentUser.CreateSubKey("Software");
                                 Manager.Mykey = Manager.Mykey.CreateSubKey("HEPL");
-                                string tmp = (string)Manager.Mykey.GetValue("Workspace");
-                                if (tmp == null)
+                                if ((string)Manager.Mykey.GetValue("Workspace") == null)
                                     Manager.Mykey.SetValue("Workspace",Directory.GetCurrentDirectory());
 
-                                //comp.Load(tmp);
+                                try
+                                {
+                                    comp.Load((string)Manager.Mykey.GetValue("Workspace") + "\\" + Manager.Code + "Compagnie.xml");
+                                }
+                                catch(FileNotFoundException)
+                                {
+                                    comp = new CompagnieAerienne();
+                                }
                             }
                             else
                             {

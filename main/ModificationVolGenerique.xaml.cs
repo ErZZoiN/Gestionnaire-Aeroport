@@ -72,8 +72,8 @@ namespace main
         {
             Vol.Numero = Int32.Parse(numero.Text);
             Vol.Compagnie = Fenetreprincipale.Compagnie;
-            Vol.AeroportDepart = (Aeroport)aeroarr.SelectedItem;
-            Vol.AeroportArrivee = (Aeroport)aerodep.SelectedItem;
+            Vol.AeroportDepart = (Aeroport)aerodep.SelectedItem;
+            Vol.AeroportArrivee = (Aeroport)aeroarr.SelectedItem;
             Vol.HeureArrivee = heurearr.Value.Value.TimeOfDay;
             Vol.HeureDepart = heuredep.Value.Value.TimeOfDay;
 

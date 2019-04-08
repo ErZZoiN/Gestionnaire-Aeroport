@@ -68,7 +68,8 @@
                     Content="=>"
                     Grid.RowSpan="3"
                     Height="20"
-                    VerticalAlignment="Center"/>
+                    VerticalAlignment="Center"
+                    Click="Programmer_Click"/>
             <StackPanel Grid.Row="2"
                         Orientation="Horizontal"
                         HorizontalAlignment="Left">
@@ -92,7 +93,13 @@
                       Grid.Column="2"
                       Grid.Row="1"
                       ItemsSource="{Binding}"
-                      IsReadOnly="True"/>
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Vol" Binding="{Binding Path=Vol.Identifiant}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Date de départ" Binding="{Binding Path=DateDepart, StringFormat=\{0:dd/MM/yy\}}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Nombre de passager" Binding="{Binding Path=NombrePassager}" IsReadOnly="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
             <StackPanel Grid.Row="2"
                         Grid.Column="2"
                         Orientation="Horizontal"

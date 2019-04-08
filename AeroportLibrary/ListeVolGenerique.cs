@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace AeroportLibrary
 {
-    public class ListeVolGenerique : ObservableCollection<VolGenerique>, IPersistent
+    public class ListeVols<T> : ObservableCollection<T>, IPersistent
     {
         public void Load(string path)
         {
-            System.Xml.Serialization.XmlSerializer xmlFormat = new System.Xml.Serialization.XmlSerializer(typeof(List<VolGenerique>));
+            System.Xml.Serialization.XmlSerializer xmlFormat = new System.Xml.Serialization.XmlSerializer(typeof(List<T>));
             Clear();
             using (Stream fStream = File.OpenRead(path))
             {
-                ((List<VolGenerique>)xmlFormat.Deserialize(fStream)).ForEach(item => Add(item));
+                ((List<T>)xmlFormat.Deserialize(fStream)).ForEach(item => Add(item));
             }
         }
 
         public void Save(string path)
         {
-            System.Xml.Serialization.XmlSerializer xmlformat = new System.Xml.Serialization.XmlSerializer(typeof(List<VolGenerique>));
+            System.Xml.Serialization.XmlSerializer xmlformat = new System.Xml.Serialization.XmlSerializer(typeof(List<T>));
             using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 xmlformat.Serialize(fStream, this.ToList());
@@ -31,11 +31,11 @@ namespace AeroportLibrary
 
         public void Sort()
         {
-            var listmp = new List<VolGenerique>(this);
+            var listmp = new List<T>(this);
             listmp.Sort();
             Clear();
 
-            foreach (VolGenerique v in listmp)
+            foreach (T v in listmp)
                 Add(v);
         }
     }

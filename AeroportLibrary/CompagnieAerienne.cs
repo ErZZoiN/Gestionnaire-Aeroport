@@ -23,8 +23,22 @@ namespace AeroportLibrary
         public string Image { get => _image; set => _image = value; }
         public string Code { get => _code; set => _code = value; }
 
+        public CompagnieAerienne()
+        {
+            Code = "";
+            Nom = "";
+            Localisation = "";
+            Image = "";
+        }
 
-        // !!!!! NE FONCTIONNE PAS !!!!!!
+        public CompagnieAerienne(string c)
+        {
+            Code = c;
+            Nom = "";
+            Localisation = "";
+            Image = "";
+        }
+
         public void Load(string path)
         {
             System.Xml.Serialization.XmlSerializer xmlFormat = new System.Xml.Serialization.XmlSerializer(typeof(CompagnieAerienne));

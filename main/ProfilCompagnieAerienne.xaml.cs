@@ -25,8 +25,8 @@ namespace main
     {
         #region VARIABLE
         private CompagnieAerienne _compagnie;
-        private ListeVolGenerique _volgencol;
-        private ObservableCollection<VolProgramme> _volprogcol;
+        private ListeVols<VolGenerique> _volgencol;
+        private ListeVols<VolProgramme> _volprogcol;
         private FlightAndAirportManager _manager;
         private string _workspace; 
         #endregion
@@ -36,8 +36,8 @@ namespace main
             Manager = m;
             Workspace = Manager.Workspace;
 
-            Volgencol = new ListeVolGenerique();
-            Volprogcol = new ObservableCollection<VolProgramme>();
+            Volgencol = new ListeVols<VolGenerique>();
+            Volprogcol = new ListeVols<VolProgramme>();
             InitializeComponent();
             volProgramme.DataContext = Volprogcol;
             volGenerique.DataContext = Volgencol;
@@ -53,8 +53,8 @@ namespace main
 
         #region PROPRIETE
         public CompagnieAerienne Compagnie { get => _compagnie; set => _compagnie = value; }
-        public ObservableCollection<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
-        public ListeVolGenerique Volgencol { get => _volgencol; set => _volgencol = value; }
+        public ListeVols<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
+        public ListeVols<VolGenerique> Volgencol { get => _volgencol; set => _volgencol = value; }
         public string Workspace { get => _workspace; set => _workspace = value; }
         public FlightAndAirportManager Manager { get => _manager; set => _manager = value; }
         #endregion
@@ -98,8 +98,8 @@ namespace main
 
         private void ProfilCompagnieAerienne_Closed(object sender, EventArgs e)
         {
-            //Compagnie.Save(Manager.Datapath);
-            //Volgencol.Save(Manager.Workspace);
+            Compagnie.Save(Manager.Datapath + "\\" + Compagnie.Code + "Compagnie.xml");
+            Volgencol.Save(Manager.Workspace + "\\" + Compagnie.Code + "Volgen.xml");
         }
 
         #region MENU
@@ -140,8 +140,20 @@ namespace main
             {
                 Volgencol.Load(dialog.FileName);
             }
-        }  
+        }
         #endregion
+
         #endregion
+
+        private void Programmer_Click(object sender, RoutedEventArgs e)
+        {
+            if(dateProg.SelectedDate!=null && volGenerique.SelectedItems!=null)
+            {
+                foreach(VolGenerique v in volGenerique.SelectedItems.Cast<VolGenerique>().ToList())
+                {
+                    Volprogcol.Add(new VolProgramme(v, dateProg.SelectedDate.Value));
+                }
+            }
+        }
     }
 }
