@@ -21,6 +21,13 @@ namespace AeroportLibrary
         public DateTime DateArrivee { get => DateDepart.Add(Vol.Duree); } 
         #endregion
 
+        public VolProgramme()
+        {
+            Vol = null;
+            DateDepart = new DateTime();
+            NombrePassager = 0;
+        }
+
         public VolProgramme(VolGenerique vol, DateTime date)
         {
             Vol = vol;

@@ -52,7 +52,13 @@ namespace main
                 Compagnie.Code = Manager.Code;
             }
 
-            this.Closed += ProfilCompagnieAerienne_Closed;
+            try
+            {
+                Volprogcol.Load(Manager.Datapath + "\\" + "Volprog.xml");
+            }
+            catch(FileNotFoundException){}
+
+            Closed += ProfilCompagnieAerienne_Closed;
         }
 
         #region PROPRIETE
@@ -170,6 +176,7 @@ namespace main
         {
             Compagnie.Save(Manager.Datapath + "\\" + Compagnie.Code + "Compagnie.xml");
             Volgencol.Save(Manager.Workspace + "\\" + Compagnie.Code + "Volgen.xml");
+            Volprogcol.Save(Manager.Datapath + "\\" + "Volprog.xml");
         }
         #endregion
 
