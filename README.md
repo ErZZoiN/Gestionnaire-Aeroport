@@ -10,16 +10,15 @@ FONCTIONNALITES :
 
 --Programmation de vols génériques et affichage
 
---Sérialisation des compagnies, vols génériques et vols programmés (pas encore utilisé ce dernier)
+--Sérialisation des compagnies, vols génériques et vols programmés
 
 --Modification des compagnies
 
+_______________________________________________________
 
 TODO :
 
 --Chargement/sauvegarde de vols génériques au format texte
-
---Utiliser la séarialisation des vols programmés
 
 --Menu "About me"
 
@@ -31,6 +30,10 @@ TODO :
 
 --SIMULATEUR
 
+______________________________________________________
+
 PATCH 11/04
 
 --Modification d'une compagnie aérienne implémentée
+
+--Sérialisation des vols programmés
