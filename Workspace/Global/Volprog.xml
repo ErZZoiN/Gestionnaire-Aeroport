@@ -38,7 +38,7 @@
       <HeureArrivee>631240000000</HeureArrivee>
       <HeureDepart>223190000000</HeureDepart>
     </Vol>
-    <DateDepart>2019-04-14T18:35:57</DateDepart>
+    <DateDepart>2019-04-16T01:35:52</DateDepart>
     <NombrePassager>35</NombrePassager>
   </VolProgramme>
   <VolProgramme>
@@ -79,7 +79,7 @@
       <HeureArrivee>608210000000</HeureArrivee>
       <HeureDepart>558980000000</HeureDepart>
     </Vol>
-    <DateDepart>2019-04-15T22:34:54</DateDepart>
+    <DateDepart>2019-04-19T04:13:04</DateDepart>
     <NombrePassager>150</NombrePassager>
   </VolProgramme>
   <VolProgramme>
@@ -120,8 +120,8 @@
       <HeureArrivee>608210000000</HeureArrivee>
       <HeureDepart>558980000000</HeureDepart>
     </Vol>
-    <DateDepart>2019-04-27T22:34:54</DateDepart>
-    <NombrePassager>0</NombrePassager>
+    <DateDepart>2019-05-01T04:13:04</DateDepart>
+    <NombrePassager>75</NombrePassager>
   </VolProgramme>
   <VolProgramme>
     <Vol>
@@ -161,8 +161,8 @@
       <HeureArrivee>631240000000</HeureArrivee>
       <HeureDepart>223190000000</HeureDepart>
     </Vol>
-    <DateDepart>2019-04-26T18:35:57</DateDepart>
-    <NombrePassager>0</NombrePassager>
+    <DateDepart>2019-04-28T01:35:52</DateDepart>
+    <NombrePassager>120</NombrePassager>
   </VolProgramme>
   <VolProgramme>
     <Vol>
@@ -202,7 +202,212 @@
       <HeureArrivee>324400000000</HeureArrivee>
       <HeureDepart>220560000000</HeureDepart>
     </Vol>
-    <DateDepart>2019-04-26T18:22:48</DateDepart>
+    <DateDepart>2019-04-28T01:00:48</DateDepart>
+    <NombrePassager>120</NombrePassager>
+  </VolProgramme>
+  <VolProgramme>
+    <Vol>
+      <AeroportArrivee>
+        <Code>BRU</Code>
+        <Ville>Bruxelles</Ville>
+        <Pays>
+          <Nom>Belgique</Nom>
+          <Code>
+            <char>66</char>
+            <char>69</char>
+            <char>76</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportArrivee>
+      <AeroportDepart>
+        <Code>MAD</Code>
+        <Ville>Madrid</Ville>
+        <Pays>
+          <Nom>Espagne</Nom>
+          <Code>
+            <char>69</char>
+            <char>83</char>
+            <char>80</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportDepart>
+      <Compagnie>
+        <Nom>TUI fly Belgium</Nom>
+        <Localisation>Anvers</Localisation>
+        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
+        <Code>TB</Code>
+      </Compagnie>
+      <Numero>1001</Numero>
+      <HeureArrivee>57070000000</HeureArrivee>
+      <HeureDepart>792640000000</HeureDepart>
+    </Vol>
+    <DateDepart>2019-04-15T18:03:12</DateDepart>
+    <NombrePassager>0</NombrePassager>
+  </VolProgramme>
+  <VolProgramme>
+    <Vol>
+      <AeroportArrivee>
+        <Code>TNG</Code>
+        <Ville>Tanger</Ville>
+        <Pays>
+          <Nom>Maroc</Nom>
+          <Code>
+            <char>77</char>
+            <char>65</char>
+            <char>82</char>
+          </Code>
+          <FuseauGMT>1</FuseauGMT>
+        </Pays>
+      </AeroportArrivee>
+      <AeroportDepart>
+        <Code>BRU</Code>
+        <Ville>Bruxelles</Ville>
+        <Pays>
+          <Nom>Belgique</Nom>
+          <Code>
+            <char>66</char>
+            <char>69</char>
+            <char>76</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportDepart>
+      <Compagnie>
+        <Nom>TUI fly Belgium</Nom>
+        <Localisation>Anvers</Localisation>
+        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
+        <Code>TB</Code>
+      </Compagnie>
+      <Numero>1</Numero>
+      <HeureArrivee>387350000000</HeureArrivee>
+      <HeureDepart>274440000000</HeureDepart>
+    </Vol>
+    <DateDepart>2019-04-13T22:52:12</DateDepart>
+    <NombrePassager>0</NombrePassager>
+  </VolProgramme>
+  <VolProgramme>
+    <Vol>
+      <AeroportArrivee>
+        <Code>BRU</Code>
+        <Ville>Bruxelles</Ville>
+        <Pays>
+          <Nom>Belgique</Nom>
+          <Code>
+            <char>66</char>
+            <char>69</char>
+            <char>76</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportArrivee>
+      <AeroportDepart>
+        <Code>MAD</Code>
+        <Ville>Madrid</Ville>
+        <Pays>
+          <Nom>Espagne</Nom>
+          <Code>
+            <char>69</char>
+            <char>83</char>
+            <char>80</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportDepart>
+      <Compagnie>
+        <Nom>TUI fly Belgium</Nom>
+        <Localisation>Anvers</Localisation>
+        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
+        <Code>TB</Code>
+      </Compagnie>
+      <Numero>1001</Numero>
+      <HeureArrivee>57070000000</HeureArrivee>
+      <HeureDepart>792640000000</HeureDepart>
+    </Vol>
+    <DateDepart>2019-04-15T18:03:12</DateDepart>
+    <NombrePassager>0</NombrePassager>
+  </VolProgramme>
+  <VolProgramme>
+    <Vol>
+      <AeroportArrivee>
+        <Code>BRU</Code>
+        <Ville>Bruxelles</Ville>
+        <Pays>
+          <Nom>Belgique</Nom>
+          <Code>
+            <char>66</char>
+            <char>69</char>
+            <char>76</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportArrivee>
+      <AeroportDepart>
+        <Code>MAD</Code>
+        <Ville>Madrid</Ville>
+        <Pays>
+          <Nom>Espagne</Nom>
+          <Code>
+            <char>69</char>
+            <char>83</char>
+            <char>80</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportDepart>
+      <Compagnie>
+        <Nom>TUI fly Belgium</Nom>
+        <Localisation>Anvers</Localisation>
+        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
+        <Code>TB</Code>
+      </Compagnie>
+      <Numero>1001</Numero>
+      <HeureArrivee>57070000000</HeureArrivee>
+      <HeureDepart>792640000000</HeureDepart>
+    </Vol>
+    <DateDepart>2019-04-15T18:03:12</DateDepart>
+    <NombrePassager>0</NombrePassager>
+  </VolProgramme>
+  <VolProgramme>
+    <Vol>
+      <AeroportArrivee>
+        <Code>TNG</Code>
+        <Ville>Tanger</Ville>
+        <Pays>
+          <Nom>Maroc</Nom>
+          <Code>
+            <char>77</char>
+            <char>65</char>
+            <char>82</char>
+          </Code>
+          <FuseauGMT>1</FuseauGMT>
+        </Pays>
+      </AeroportArrivee>
+      <AeroportDepart>
+        <Code>BRU</Code>
+        <Ville>Bruxelles</Ville>
+        <Pays>
+          <Nom>Belgique</Nom>
+          <Code>
+            <char>66</char>
+            <char>69</char>
+            <char>76</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportDepart>
+      <Compagnie>
+        <Nom>TUI fly Belgium</Nom>
+        <Localisation>Anvers</Localisation>
+        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
+        <Code>TB</Code>
+      </Compagnie>
+      <Numero>1</Numero>
+      <HeureArrivee>387350000000</HeureArrivee>
+      <HeureDepart>274440000000</HeureDepart>
+    </Vol>
+    <DateDepart>2019-04-13T22:52:12</DateDepart>
     <NombrePassager>0</NombrePassager>
   </VolProgramme>
 </ArrayOfVolProgramme>

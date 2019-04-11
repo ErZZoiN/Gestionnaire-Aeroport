@@ -27,6 +27,7 @@ namespace main
         private CompagnieAerienne _compagnie;
         private ListeVols<VolGenerique> _volgencol;
         private ListeVols<VolProgramme> _volprogcol;
+        private ObservableCollection<VolProgramme> _volprogaffiche;
         private FlightAndAirportManager _manager;
         private string _workspace; 
         #endregion
@@ -39,8 +40,9 @@ namespace main
 
             Volgencol = new ListeVols<VolGenerique>();
             Volprogcol = new ListeVols<VolProgramme>();
+            Volprogaffiche = new ObservableCollection<VolProgramme>();
             InitializeComponent();
-            volProgramme.DataContext = Volprogcol;
+            volProgramme.DataContext = Volprogaffiche;
             volGenerique.DataContext = Volgencol;
 
             try
@@ -55,6 +57,19 @@ namespace main
             try
             {
                 Volprogcol.Load(Manager.Datapath + "\\" + "Volprog.xml");
+                foreach(VolProgramme v in Volprogcol)
+                {
+                    if(v.Vol.Compagnie.Code==Compagnie.Code)
+                    {
+                        Volprogaffiche.Add(v);
+                    }
+                }
+
+                foreach(VolProgramme v in Volprogaffiche)
+                {
+                    Volprogcol.Remove(v);
+                }
+
             }
             catch(FileNotFoundException){}
 
@@ -67,6 +82,7 @@ namespace main
         public ListeVols<VolGenerique> Volgencol { get => _volgencol; set => _volgencol = value; }
         public string Workspace { get => _workspace; set => _workspace = value; }
         public FlightAndAirportManager Manager { get => _manager; set => _manager = value; }
+        public ObservableCollection<VolProgramme> Volprogaffiche { get => _volprogaffiche; set => _volprogaffiche = value; }
         #endregion
 
         #region LISTENERS
@@ -154,7 +170,7 @@ namespace main
             {
                 foreach (VolGenerique v in volGenerique.SelectedItems.Cast<VolGenerique>().ToList())
                 {
-                    Volprogcol.Add(new VolProgramme(v, dateProg.SelectedDate.Value));
+                    Volprogaffiche.Add(new VolProgramme(v, dateProg.SelectedDate.Value));
                 }
             }
         }
@@ -176,6 +192,12 @@ namespace main
         {
             Compagnie.Save(Manager.Datapath + "\\" + Compagnie.Code + "Compagnie.xml");
             Volgencol.Save(Manager.Workspace + "\\" + Compagnie.Code + "Volgen.xml");
+
+            foreach(VolProgramme v in Volprogaffiche)
+            {
+                Volprogcol.Add(v);
+            }
+
             Volprogcol.Save(Manager.Datapath + "\\" + "Volprog.xml");
         }
         #endregion
