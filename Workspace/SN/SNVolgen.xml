@@ -1,2 +1,114 @@
 <?xml version="1.0"?>
-<ArrayOfVolGenerique xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+<ArrayOfVolGenerique xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <VolGenerique>
+    <AeroportArrivee>
+      <Code>JFK</Code>
+      <Ville>New York</Ville>
+      <Pays>
+        <Nom>Etats-unis</Nom>
+        <Code>
+          <char>85</char>
+          <char>83</char>
+          <char>65</char>
+        </Code>
+        <FuseauGMT>-4</FuseauGMT>
+      </Pays>
+    </AeroportArrivee>
+    <AeroportDepart>
+      <Code>TNG</Code>
+      <Ville>Tanger</Ville>
+      <Pays>
+        <Nom>Maroc</Nom>
+        <Code>
+          <char>77</char>
+          <char>65</char>
+          <char>82</char>
+        </Code>
+        <FuseauGMT>1</FuseauGMT>
+      </Pays>
+    </AeroportDepart>
+    <Compagnie>
+      <Nom />
+      <Localisation />
+      <Image />
+      <Code>SN</Code>
+    </Compagnie>
+    <Numero>5896</Numero>
+    <HeureArrivee>631240000000</HeureArrivee>
+    <HeureDepart>223190000000</HeureDepart>
+  </VolGenerique>
+  <VolGenerique>
+    <AeroportArrivee>
+      <Code>BRU</Code>
+      <Ville>Bruxelles</Ville>
+      <Pays>
+        <Nom>Belgique</Nom>
+        <Code>
+          <char>66</char>
+          <char>69</char>
+          <char>76</char>
+        </Code>
+        <FuseauGMT>2</FuseauGMT>
+      </Pays>
+    </AeroportArrivee>
+    <AeroportDepart>
+      <Code>BER</Code>
+      <Ville>Berlin</Ville>
+      <Pays>
+        <Nom>Allemagne</Nom>
+        <Code>
+          <char>71</char>
+          <char>69</char>
+          <char>82</char>
+        </Code>
+        <FuseauGMT>2</FuseauGMT>
+      </Pays>
+    </AeroportDepart>
+    <Compagnie>
+      <Nom />
+      <Localisation />
+      <Image />
+      <Code>SN</Code>
+    </Compagnie>
+    <Numero>1212</Numero>
+    <HeureArrivee>608210000000</HeureArrivee>
+    <HeureDepart>558980000000</HeureDepart>
+  </VolGenerique>
+  <VolGenerique>
+    <AeroportArrivee>
+      <Code>TNG</Code>
+      <Ville>Tanger</Ville>
+      <Pays>
+        <Nom>Maroc</Nom>
+        <Code>
+          <char>77</char>
+          <char>65</char>
+          <char>82</char>
+        </Code>
+        <FuseauGMT>1</FuseauGMT>
+      </Pays>
+    </AeroportArrivee>
+    <AeroportDepart>
+      <Code>JFK</Code>
+      <Ville>New York</Ville>
+      <Pays>
+        <Nom>Etats-unis</Nom>
+        <Code>
+          <char>85</char>
+          <char>83</char>
+          <char>65</char>
+        </Code>
+        <FuseauGMT>-4</FuseauGMT>
+      </Pays>
+    </AeroportDepart>
+    <Compagnie>
+      <Nom>Brussels Airlines</Nom>
+      <Localisation>Bruxelles</Localisation>
+      <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\SN\Logo.png</Image>
+      <Code>SN</Code>
+    </Compagnie>
+    <Numero>1456</Numero>
+    <HeureArrivee>326460000000</HeureArrivee>
+    <HeureDepart>809380000000</HeureDepart>
+  </VolGenerique>
+</ArrayOfVolGenerique>

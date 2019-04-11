@@ -41,6 +41,23 @@ namespace AeroportLibrary
             }
         }
 
+        public bool IsNextDay {
+            get{
+                if (HeureDepart > HeureArrivee)
+                    return true;
+                return false;
+            } }
+
+        public string AffichageArrivee
+        {
+            get
+            {
+                if(IsNextDay)
+                    return HeureArrivee.ToString() + "+1";
+                return HeureArrivee.ToString();
+            }
+        }
+
         //On créé des propriétés factices pour sérialiser les timeSpan via des longs
         [XmlElement("HeureArrivee")]
         public long HeureArriveeTicks
@@ -60,6 +77,7 @@ namespace AeroportLibrary
         {
             return HeureDepart.CompareTo(v.HeureDepart);
         }
+
         #endregion
     }
 }

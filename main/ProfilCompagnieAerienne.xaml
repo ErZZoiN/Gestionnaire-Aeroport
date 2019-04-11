@@ -61,10 +61,19 @@
                     <DataGridTextColumn Header="Départ" FontWeight="Bold" Binding="{Binding Path=AeroportDepart.Nomination}"/>
                     <DataGridTextColumn Header="Arrivée" FontWeight="Bold" Binding="{Binding Path=AeroportArrivee.Nomination}"/>
                     <DataGridTextColumn Header="Heure de départ" Binding="{Binding Path=HeureDepart}"/>
-                    <DataGridTextColumn Header="Heure d'arrivée" Binding="{Binding Path=HeureArrivee}"/>
+                    <DataGridTextColumn Header="Heure d'arrivée" Binding="{Binding Path=AffichageArrivee}">
+                        <!--<DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsNextDay}" Value="True">
+                                        <Setter Property="Content" Value="YOLO"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>-->
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Durée" Binding="{Binding Path=Duree}"/>
                 </DataGrid.Columns>
-                
             </DataGrid>
             <Button Grid.Column="1"
                     Name="programmer"
