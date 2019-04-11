@@ -33,6 +33,9 @@
         <ToolBar>
             <Button Name="toolLoadVols"
                     Content="Charger vols génériques"/>
+            <Button Name="editCompagnie"
+                    Content="Editer la compagnie"
+                    Click="EditCompagnie_Click"/>
         </ToolBar>
         <Grid>
             <Grid.ColumnDefinitions>

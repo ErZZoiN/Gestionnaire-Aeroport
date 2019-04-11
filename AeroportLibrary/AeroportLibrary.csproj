@@ -61,7 +61,7 @@
     <Compile Include="Aeroport.cs" />
     <Compile Include="CompagnieAerienne.cs" />
     <Compile Include="IPersistent.cs" />
-    <Compile Include="ListeVolGenerique.cs" />
+    <Compile Include="ListeVols.cs" />
     <Compile Include="Pays.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VolGenerique.cs" />

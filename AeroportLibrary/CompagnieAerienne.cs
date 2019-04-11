@@ -55,6 +55,7 @@ namespace AeroportLibrary
         public void Save(string path)
         {
             System.Xml.Serialization.XmlSerializer xmlformat = new System.Xml.Serialization.XmlSerializer(typeof(CompagnieAerienne));
+            Console.WriteLine(path);
             using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 xmlformat.Serialize(fStream, this);

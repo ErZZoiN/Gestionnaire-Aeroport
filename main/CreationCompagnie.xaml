@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:main"
         mc:Ignorable="d"
-        Title="Modification d'une compagnie aérienne" Height="450" Width="800">
+        Title="Modification d'une compagnie aérienne" Height="195.559" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -16,14 +16,41 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Content="Nom :"
                Grid.Row="0"/>
+        <TextBox Name="nom"
+                 Grid.Column="1"/>
         <Label Content="Localisation :"
                Grid.Row="1"/>
+        <TextBox Name="localisation"
+                 Grid.Column="1"
+                 Grid.Row="1"/>
         <Label Content="Image :"
                Grid.Row="2"/>
-        <Label Content="Ville :"
+        <TextBox Name="image"
+                 Grid.Column="1"
+                 Grid.Row="2"
+                 IsReadOnly="True"
+                 MouseDoubleClick="Image_MouseDoubleClick"/>
+        <Label Content="Code :"
                Grid.Row="3"/>
+        <TextBox Name="code"
+                   Grid.Column="1"
+                   Grid.Row="3"
+                   IsReadOnly="True"/>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="1"
+                    Grid.Row="4"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+            <Button Name="valider"
+                    Content="Valider"
+                    Click="Valider_Click"/>
+            <Button Name="annuler"
+                    Content="Annuler"
+                    Click="Annuler_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

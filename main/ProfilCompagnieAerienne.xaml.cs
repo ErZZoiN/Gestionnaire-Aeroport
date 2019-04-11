@@ -35,19 +35,23 @@ namespace main
         {
             Manager = m;
             Workspace = Manager.Workspace;
+            Compagnie = new CompagnieAerienne();
 
             Volgencol = new ListeVols<VolGenerique>();
             Volprogcol = new ListeVols<VolProgramme>();
             InitializeComponent();
             volProgramme.DataContext = Volprogcol;
             volGenerique.DataContext = Volgencol;
-            Compagnie = new CompagnieAerienne
+
+            try
             {
-                Nom = "",
-                Localisation = "",
-                Image = "",
-                Code = "SN"
-            };
+                Compagnie.Load(Manager.Datapath + "\\" + Manager.Code + "Compagnie.xml");
+            }
+            catch(FileNotFoundException)
+            {
+                Compagnie.Code = Manager.Code;
+            }
+
             this.Closed += ProfilCompagnieAerienne_Closed;
         }
 
@@ -79,13 +83,6 @@ namespace main
             }
         }
 
-        private void GenSupprimer_Click(object sender, RoutedEventArgs e)
-        {
-            if (volGenerique.SelectedItem != null)
-                ((ObservableCollection<VolGenerique>)volGenerique.DataContext).Remove((VolGenerique)volGenerique.SelectedItem);
-        } 
-        #endregion
-
         public void ModVolGen(bool ajout, VolGenerique vol)
         {
             if (!ajout)
@@ -96,11 +93,12 @@ namespace main
             Volgencol.Sort();
         }
 
-        private void ProfilCompagnieAerienne_Closed(object sender, EventArgs e)
+        private void GenSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            Compagnie.Save(Manager.Datapath + "\\" + Compagnie.Code + "Compagnie.xml");
-            Volgencol.Save(Manager.Workspace + "\\" + Compagnie.Code + "Volgen.xml");
-        }
+            if (volGenerique.SelectedItem != null)
+                ((ObservableCollection<VolGenerique>)volGenerique.DataContext).Remove((VolGenerique)volGenerique.SelectedItem);
+        } 
+        #endregion
 
         #region MENU
         private void MenuNouveauLog_Click(object sender, RoutedEventArgs e)
@@ -143,17 +141,38 @@ namespace main
         }
         #endregion
 
-        #endregion
-
+        #region TOOLBAR
         private void Programmer_Click(object sender, RoutedEventArgs e)
         {
-            if(dateProg.SelectedDate!=null && volGenerique.SelectedItems!=null)
+            if (dateProg.SelectedDate != null && volGenerique.SelectedItems != null)
             {
-                foreach(VolGenerique v in volGenerique.SelectedItems.Cast<VolGenerique>().ToList())
+                foreach (VolGenerique v in volGenerique.SelectedItems.Cast<VolGenerique>().ToList())
                 {
                     Volprogcol.Add(new VolProgramme(v, dateProg.SelectedDate.Value));
                 }
             }
         }
+
+        private void EditCompagnie_Click(object sender, RoutedEventArgs e)
+        {
+            var mod = new CreationCompagnie(Compagnie, Workspace);
+            mod.Valider += Mod_Valider;
+            mod.Show();
+        }
+
+        private void Mod_Valider(CompagnieAerienne c)
+        {
+            Compagnie = c;
+        }
+        #endregion
+
+        private void ProfilCompagnieAerienne_Closed(object sender, EventArgs e)
+        {
+            Compagnie.Save(Manager.Datapath + "\\" + Compagnie.Code + "Compagnie.xml");
+            Volgencol.Save(Manager.Workspace + "\\" + Compagnie.Code + "Volgen.xml");
+        }
+        #endregion
+
+
     }
 }

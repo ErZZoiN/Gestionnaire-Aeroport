@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <CompagnieAerienne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Nom />
-  <Localisation />
-  <Image />
+  <Nom>Brussels Airlines</Nom>
+  <Localisation>Bruxelles</Localisation>
+  <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\SN\Logo.png</Image>
   <Code>SN</Code>
 </CompagnieAerienne>
