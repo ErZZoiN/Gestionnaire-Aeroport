@@ -44,6 +44,13 @@ namespace main
                 Compagnie.Code = Manager.Code;
             }
 
+            //Pour afficher uniquement les vols génériques désirés,
+            //On prend la liste complète, dont on retire les éléments
+            //voulus pour les rajouter dans la liste effectivement
+            //affichée.
+            //Pour enregistrer la liste, on ajoute les éléments de la
+            //collections affichées à la collections complète modifiée
+            //au lancement.
             try
             {
                 Volprogcol.Load(Manager.Datapath + "\\" + "Volprog.xml");
@@ -107,12 +114,29 @@ namespace main
 
         private void GenSupprimer_Click(object sender, RoutedEventArgs e)
         {
-            if (volGenerique.SelectedItem != null)
-                ((ObservableCollection<VolGenerique>)volGenerique.DataContext).Remove((VolGenerique)volGenerique.SelectedItem);
+            foreach (VolGenerique v in volGenerique.SelectedItems.Cast<VolGenerique>().ToList())
+            {
+                Volgencol.Remove(v);
+            }
         }
         #endregion
 
+        #region PROGRAMME DATAGRID
+        private void ProgSupprimer_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (VolProgramme v in volProgramme.SelectedItems.Cast<VolProgramme>().ToList())
+            {
+                Volprogaffiche.Remove(v);
+            }
+        } 
+        #endregion
+
         #region MENU
+
+        private void MenuAbout_Click(object sender, RoutedEventArgs e)
+        {
+            new AboutMeCompagnie(Compagnie).ShowDialog();
+        }
         private void MenuNouveauLog_Click(object sender, RoutedEventArgs e)
         {
             MainWindow nl = new MainWindow(Compagnie);
@@ -194,8 +218,7 @@ namespace main
 
             Volprogcol.Save(Manager.Datapath + "\\" + "Volprog.xml");
         }
+
         #endregion
-
-
     }
 }

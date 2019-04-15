@@ -1,20 +1,8 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AeroportLibrary;
+﻿using AeroportLibrary;
+using Microsoft.Win32;
 using System.IO;
+using System.Linq;
+using System.Windows;
 
 namespace main
 {
@@ -24,7 +12,7 @@ namespace main
     public partial class MainWindow : Window
     {
         private FlightAndAirportManager manager;
-        private bool ajout;
+        private readonly bool ajout;
 
         public MainWindow()
         {
@@ -64,21 +52,15 @@ namespace main
                                 Manager.Mykey = Registry.CurrentUser.CreateSubKey("Software");
                                 Manager.Mykey = Manager.Mykey.CreateSubKey("HEPL");
                                 if ((string)Manager.Mykey.GetValue("Workspace") == null)
-                                    Manager.Mykey.SetValue("Workspace",Directory.GetCurrentDirectory());
+                                    Manager.Mykey.SetValue("Workspace", Directory.GetCurrentDirectory());
 
                                 try
                                 {
                                     comp.Load((string)Manager.Mykey.GetValue("Workspace") + "\\" + Manager.Code + "Compagnie.xml");
                                 }
-                                catch(FileNotFoundException)
+                                catch (FileNotFoundException)
                                 {
-                                    comp = new CompagnieAerienne();
                                 }
-                            }
-                            else
-                            {
-                                comp = new CompagnieAerienne();
-                                comp.Code = code.Text;
                             }
                             break;
                         case 3:
@@ -86,7 +68,7 @@ namespace main
                             break;
                     }
 
-                    var fenprin = new ProfilCompagnieAerienne(Manager);
+                    ProfilCompagnieAerienne fenprin = new ProfilCompagnieAerienne(Manager);
                     fenprin.Show();
                     Close();
                 }

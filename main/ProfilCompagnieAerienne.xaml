@@ -25,7 +25,8 @@
             </MenuItem>
             <MenuItem Header="Outils">
                 <MenuItem Name="menuAbout"
-                          Header="About me"/>
+                          Header="About me"
+                          Click="MenuAbout_Click"/>
                 <MenuItem Header="Options"
                           Name="menuOption"/>
             </MenuItem>
@@ -117,9 +118,10 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <Button Name="progRetarder"
-                        Content="Retarder"/>
+                        Content="TODO : Retarder"/>
                 <Button Name="progSupprimer"
-                        Content="Supprimer"/>
+                        Content="Supprimer"
+                        Click="ProgSupprimer_Click"/>
             </StackPanel>
         </Grid>
     </StackPanel>

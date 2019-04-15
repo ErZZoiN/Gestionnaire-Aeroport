@@ -1,0 +1,15 @@
+﻿<Window x:Class="main.AboutMeCompagnie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:main"
+        mc:Ignorable="d"
+        Title="AboutMeCompagnie" Height="276.275" Width="398.515">
+    <Grid>
+        <Label Name="nom" Content="Label" HorizontalAlignment="Left" Margin="88,57,0,0" VerticalAlignment="Top"/>
+        <Label Name="code" Content="Label" HorizontalAlignment="Left" Margin="88,119,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.463,-0.532"/>
+        <Label Name="localisation" Content="Label" HorizontalAlignment="Left" Margin="88,88,0,0" VerticalAlignment="Top"/>
+        <Image Name="logo" HorizontalAlignment="Left" Height="100" Margin="242,46,0,0" VerticalAlignment="Top" Width="100"/>
+    </Grid>
+</Window>
