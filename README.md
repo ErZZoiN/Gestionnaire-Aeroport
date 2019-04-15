@@ -15,12 +15,11 @@ FONCTIONNALITES :
 --Modification des compagnies
 
 _______________________________________________________
+_______________________________________________________
 
 TODO :
 
 --Chargement/sauvegarde de vols génériques au format texte
-
---Menu "About me"
 
 --Options
 
@@ -29,6 +28,15 @@ TODO :
 --TOURS DE CONTRÔLE
 
 --SIMULATEUR
+
+______________________________________________________
+______________________________________________________
+
+PATCH 15/04
+
+--Ajout fenêtre AboutMe pour l'affichage des données d'une compagnie aérienne
+
+--Suppression de vols programmés
 
 ______________________________________________________
 
