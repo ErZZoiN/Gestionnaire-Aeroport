@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AeroportLibrary;
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using AeroportLibrary;
 
 namespace main
 {
@@ -29,7 +19,7 @@ namespace main
         private ListeVols<VolProgramme> _volprogcol;
         private ObservableCollection<VolProgramme> _volprogaffiche;
         private FlightAndAirportManager _manager;
-        private string _workspace; 
+        private string _workspace;
         #endregion
 
         public ProfilCompagnieAerienne(FlightAndAirportManager m)
@@ -49,7 +39,7 @@ namespace main
             {
                 Compagnie.Load(Manager.Datapath + "\\" + Manager.Code + "Compagnie.xml");
             }
-            catch(FileNotFoundException)
+            catch (FileNotFoundException)
             {
                 Compagnie.Code = Manager.Code;
             }
@@ -57,21 +47,21 @@ namespace main
             try
             {
                 Volprogcol.Load(Manager.Datapath + "\\" + "Volprog.xml");
-                foreach(VolProgramme v in Volprogcol)
+                foreach (VolProgramme v in Volprogcol)
                 {
-                    if(v.Vol.Compagnie.Code==Compagnie.Code)
+                    if (v.Vol.Compagnie.Code == Compagnie.Code)
                     {
                         Volprogaffiche.Add(v);
                     }
                 }
 
-                foreach(VolProgramme v in Volprogaffiche)
+                foreach (VolProgramme v in Volprogaffiche)
                 {
                     Volprogcol.Remove(v);
                 }
 
             }
-            catch(FileNotFoundException){}
+            catch (FileNotFoundException) { }
 
             Closed += ProfilCompagnieAerienne_Closed;
         }
@@ -89,7 +79,7 @@ namespace main
         #region GENERIQUE DATAGRID
         private void GenAjouter_Click(object sender, RoutedEventArgs e)
         {
-            var mod = new ModificationVolGenerique(this);
+            ModificationVolGenerique mod = new ModificationVolGenerique(this);
             mod.Valider += ModVolGen;
             mod.Show();
         }
@@ -99,7 +89,7 @@ namespace main
             if (volGenerique.SelectedItem != null)
             {
 
-                var mod = new ModificationVolGenerique(this, (VolGenerique)volGenerique.SelectedItem);
+                ModificationVolGenerique mod = new ModificationVolGenerique(this, (VolGenerique)volGenerique.SelectedItem);
                 mod.Valider += ModVolGen;
                 mod.ShowDialog();
             }
@@ -119,7 +109,7 @@ namespace main
         {
             if (volGenerique.SelectedItem != null)
                 ((ObservableCollection<VolGenerique>)volGenerique.DataContext).Remove((VolGenerique)volGenerique.SelectedItem);
-        } 
+        }
         #endregion
 
         #region MENU
@@ -138,23 +128,27 @@ namespace main
 
         private void MenuSauvegarder_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new SaveFileDialog();
-            dialog.InitialDirectory = Workspace;
-            Console.WriteLine(Workspace);
-            Console.WriteLine("COUCUO");
-            dialog.AddExtension = true;
-            dialog.DefaultExt = ".xml";
-
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            using (SaveFileDialog dialog = new SaveFileDialog
             {
-                Volgencol.Save(dialog.FileName);
+                InitialDirectory = Workspace
+            })
+            {
+                dialog.AddExtension = true;
+                dialog.DefaultExt = ".xml";
+
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Volgencol.Save(dialog.FileName);
+                }
             }
         }
 
         private void MenuCharger_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new OpenFileDialog();
-            dialog.InitialDirectory = Workspace;
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                InitialDirectory = Workspace
+            };
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -177,7 +171,7 @@ namespace main
 
         private void EditCompagnie_Click(object sender, RoutedEventArgs e)
         {
-            var mod = new CreationCompagnie(Compagnie, Workspace);
+            CreationCompagnie mod = new CreationCompagnie(Compagnie, Workspace);
             mod.Valider += Mod_Valider;
             mod.Show();
         }
@@ -193,7 +187,7 @@ namespace main
             Compagnie.Save(Manager.Datapath + "\\" + Compagnie.Code + "Compagnie.xml");
             Volgencol.Save(Manager.Workspace + "\\" + Compagnie.Code + "Volgen.xml");
 
-            foreach(VolProgramme v in Volprogaffiche)
+            foreach (VolProgramme v in Volprogaffiche)
             {
                 Volprogcol.Add(v);
             }
