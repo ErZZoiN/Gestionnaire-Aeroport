@@ -8,11 +8,11 @@ FONCTIONNALITES :
 
 --Création, modification et affichage de vols génériques
 
---Programmation de vols génériques et affichage
+--Programmation/suppression de vols génériques et affichage
 
 --Sérialisation des compagnies, vols génériques et vols programmés
 
---Modification des compagnies
+--Modification/affichage des compagnies
 
 _______________________________________________________
 _______________________________________________________
