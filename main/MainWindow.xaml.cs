@@ -21,7 +21,7 @@ namespace main
             InitializeComponent();
         }
 
-        public MainWindow(CompagnieAerienne c)
+        public MainWindow(Profil c)
         {
             ajout = true;
             Manager = new FlightAndAirportManager();
@@ -39,13 +39,14 @@ namespace main
             {
                 if (Manager.Connexion(code.Text, password.Password, login.Text))
                 {
+                    Profil comp;
                     Manager.Init(code.Text);
                     Manager.Mykey = Registry.CurrentUser.CreateSubKey("Software");
                     Manager.Mykey = Manager.Mykey.CreateSubKey("HEPL");
-                    CompagnieAerienne comp = new CompagnieAerienne();
                     switch (code.Text.Length)
                     {
                         case 2:
+                            comp = new CompagnieAerienne(code.Text);
                             Manager.Mykey = Manager.Mykey.CreateSubKey("Code compagnie aerienne");
                             if (Manager.Mykey.GetSubKeyNames().Contains<string>(code.Text))
                             {
@@ -62,14 +63,31 @@ namespace main
                                 {
                                 }
                             }
+                            ProfilCompagnieAerienne fenprin = new ProfilCompagnieAerienne(Manager);
+                            fenprin.Show();
                             break;
                         case 3:
+                            comp = new Aeroport() { Code = code.Text };
                             Manager.Mykey = Manager.Mykey.CreateSubKey("Code aeroport");
+                            if (Manager.Mykey.GetSubKeyNames().Contains<string>(code.Text))
+                            {
+                                Manager.Mykey = Registry.CurrentUser.CreateSubKey("Software");
+                                Manager.Mykey = Manager.Mykey.CreateSubKey("HEPL");
+                                if ((string)Manager.Mykey.GetValue("Workspace") == null)
+                                    Manager.Mykey.SetValue("Workspace", Directory.GetCurrentDirectory());
+
+                                try
+                                {
+                                    comp.Load((string)Manager.Mykey.GetValue("Workspace") + "\\" + Manager.Code + "Aeroport.xml");
+                                }
+                                catch (FileNotFoundException)
+                                {
+                                }
+                            }
+                            var fenprin2 = new ProfilAeroport(Manager);
+                            fenprin2.Show();
                             break;
                     }
-
-                    ProfilCompagnieAerienne fenprin = new ProfilCompagnieAerienne(Manager);
-                    fenprin.Show();
                     Close();
                 }
             }

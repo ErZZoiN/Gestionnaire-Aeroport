@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AeroportLibrary
 {
-    public class Aeroport
+    public class Aeroport : Profil
     {
         #region VARIABLE
-        private string _code;
         private string _ville;
         private Pays _pays;
         #endregion
 
         #region PROPRIETE
-        public string Code { get => _code; set => _code = value; }
         public string Ville { get => _ville; set => _ville = value; }
         public Pays Pays { get => _pays; set => _pays = value; }
         public string Nomination { get => Code + " " + Ville; }
@@ -46,5 +45,26 @@ namespace AeroportLibrary
         public static Aeroport MADRID = new Aeroport("MAD", "Madrid", Pays.ESPAGNE);
         public static Aeroport BARCELONE = new Aeroport("BCN", "Barcelone", Pays.ESPAGNE);
         public static Aeroport[] LISTEAEROPORT = { BRUXELLES, CHARLEROI, KENNEDY, BERLIN, TANGER, MARRAKESH, ORLY, MARSEILLE, MADRID, BARCELONE };
+
+        public override void Load(string path)
+        {
+            System.Xml.Serialization.XmlSerializer xmlFormat = new System.Xml.Serialization.XmlSerializer(typeof(Aeroport));
+            using (Stream fStream = File.OpenRead(path))
+            {
+                Aeroport tmp = (Aeroport)xmlFormat.Deserialize(fStream);
+                Ville = tmp.Ville;
+                Pays = tmp.Pays;
+                Code = tmp.Code;
+            }
+        }
+
+        public override void Save(string path)
+        {
+            System.Xml.Serialization.XmlSerializer xmlformat = new System.Xml.Serialization.XmlSerializer(typeof(Aeroport));
+            using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                xmlformat.Serialize(fStream, this);
+            }
+        }
     }
 }

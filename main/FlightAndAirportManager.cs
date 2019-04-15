@@ -93,12 +93,13 @@ namespace main
 
             if ((string)Mykey.GetValue("Workspace") == null)
             {
-                var dialog = new FolderBrowserDialog();
-                dialog.ShowNewFolderButton = true;
+                var dialog = new FolderBrowserDialog
+                {
+                    ShowNewFolderButton = true,
+                    SelectedPath = Directory.GetCurrentDirectory()
+                };
 
-                dialog.SelectedPath = Directory.GetCurrentDirectory();
-
-                if(dialog.ShowDialog() == DialogResult.OK)
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     Mykey.SetValue("Workspace", dialog.SelectedPath);
                 }

@@ -12,13 +12,15 @@ namespace AeroportLibrary
         private VolGenerique _vol;
         private DateTime _datedepart;
         private int _nombrepassager;
+        private int _retard;
         #endregion
 
         #region PROPRIETE
         public VolGenerique Vol { get => _vol; set => _vol = value; }
         public DateTime DateDepart { get => _datedepart.Add(Vol.HeureDepart); set => _datedepart = value; }
         public int NombrePassager { get => _nombrepassager; set => _nombrepassager = value; }
-        public DateTime DateArrivee { get => DateDepart.Add(Vol.Duree); } 
+        public DateTime DateArrivee { get => DateDepart.Add(Vol.Duree); }
+        public int Retard { get => _retard; set => _retard = value; }
         #endregion
 
         public VolProgramme()
@@ -26,6 +28,7 @@ namespace AeroportLibrary
             Vol = null;
             DateDepart = new DateTime();
             NombrePassager = 0;
+            Retard = 0;
         }
 
         public VolProgramme(VolGenerique vol, DateTime date)
@@ -33,6 +36,7 @@ namespace AeroportLibrary
             Vol = vol;
             DateDepart = date;
             NombrePassager = 0;
+            Retard = 0;
         }
 
         #region METHODES

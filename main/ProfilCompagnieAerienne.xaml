@@ -63,15 +63,6 @@
                     <DataGridTextColumn Header="Arrivée" FontWeight="Bold" Binding="{Binding Path=AeroportArrivee.Nomination}"/>
                     <DataGridTextColumn Header="Heure de départ" Binding="{Binding Path=HeureDepart}"/>
                     <DataGridTextColumn Header="Heure d'arrivée" Binding="{Binding Path=AffichageArrivee}">
-                        <!--<DataGridTextColumn.CellStyle>
-                            <Style TargetType="DataGridCell">
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Path=IsNextDay}" Value="True">
-                                        <Setter Property="Content" Value="YOLO"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </DataGridTextColumn.CellStyle>-->
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Durée" Binding="{Binding Path=Duree}"/>
                 </DataGrid.Columns>
@@ -111,14 +102,15 @@
                     <DataGridTextColumn Header="Vol" Binding="{Binding Path=Vol.Identifiant}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Date de départ" Binding="{Binding Path=DateDepart, StringFormat=\{0:dd/MM/yy\}}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Nombre de passager" Binding="{Binding Path=NombrePassager}" IsReadOnly="False"/>
+                    <DataGridTextColumn Header="Retard" Binding="{Binding Path=Retard}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel Grid.Row="2"
                         Grid.Column="2"
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <Button Name="progRetarder"
-                        Content="TODO : Retarder"/>
+                <!--<Button Name="progRetarder"
+                        Content="TODO : Retarder"/>-->
                 <Button Name="progSupprimer"
                         Content="Supprimer"
                         Click="ProgSupprimer_Click"/>
