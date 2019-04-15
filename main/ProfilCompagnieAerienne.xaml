@@ -26,7 +26,7 @@
             <MenuItem Header="Outils">
                 <MenuItem Name="menuAbout"
                           Header="About me"/>
-                <MenuItem Header="Option"
+                <MenuItem Header="Options"
                           Name="menuOption"/>
             </MenuItem>
         </Menu>
