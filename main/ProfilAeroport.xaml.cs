@@ -1,19 +1,7 @@
 ﻿using AeroportLibrary;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace main
 {
@@ -26,7 +14,7 @@ namespace main
         private Aeroport _monaeroport;
         private FlightAndAirportManager _manager;
         private ListeVols<VolProgramme> _volprogcol;
-        private ObservableCollection<VolProgramme> _volprogaffiche; 
+        private ObservableCollection<VolProgramme> _volprogaffiche;
         #endregion
         public ProfilAeroport(FlightAndAirportManager m)
         {
@@ -49,6 +37,7 @@ namespace main
             try
             {
                 Volprogcol.Load(Manager.Datapath + "\\" + "Volprog.xml");
+                Volprogcol.Sort();
                 foreach (VolProgramme v in Volprogcol)
                 {
                     if (v.Vol.AeroportArrivee.Code == Monaeroport.Code)
@@ -64,13 +53,65 @@ namespace main
 
             }
             catch (FileNotFoundException) { }
+
+            Closed += ProfilAeroport_Closed;
+        }
+
+        private void ProfilAeroport_Closed(object sender, System.EventArgs e)
+        {
+            Monaeroport.Save(Manager.Datapath + "\\" + Monaeroport.Code + "Compagnie.xml");
+            foreach (VolProgramme v in Volprogaffiche)
+            {
+                Volprogcol.Add(v);
+            }
+            Volprogcol.Save(Manager.Datapath + "\\" + "Volprog.xml");
         }
 
         #region PROPRIETE
         public FlightAndAirportManager Manager { get => _manager; set => _manager = value; }
         public ListeVols<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
         public ObservableCollection<VolProgramme> Volprogaffiche { get => _volprogaffiche; set => _volprogaffiche = value; }
-        public Aeroport Monaeroport { get => _monaeroport; set => _monaeroport = value; } 
+        public Aeroport Monaeroport { get => _monaeroport; set => _monaeroport = value; }
         #endregion
+
+        private void Retarder_Click(object sender, RoutedEventArgs e)
+        {
+            if (volProgramme.SelectedItem != null)
+            {
+                foreach (VolProgramme v in (ObservableCollection<VolProgramme>)volProgramme.DataContext)
+                    if (v.Equals(volProgramme.SelectedItem))
+                        v.Retard += 5;
+            }
+        }
+        private void MenuNouveauLog_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow nl = new MainWindow(Monaeroport);
+            nl.Show();
+        }
+
+        private void MenuDeconnexion_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow nl = new MainWindow();
+            nl.Show();
+            Close();
+        }
+
+        private void MenuAbout_Click(object sender, RoutedEventArgs e)
+        {
+            new AboutMe(Monaeroport).ShowDialog();
+        }
+
+        private void MenuOption_Click(object sender, RoutedEventArgs e)
+        {
+            var tmp = new Options(Manager);
+            tmp.Show();
+
+            tmp.Valider += Tmp_Valider;
+        }
+
+        private void Tmp_Valider(FlightAndAirportManager m)
+        {
+            Manager = m;
+        }
     }
 }

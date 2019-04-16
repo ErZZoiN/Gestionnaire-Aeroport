@@ -54,6 +54,7 @@ namespace main
             try
             {
                 Volprogcol.Load(Manager.Datapath + "\\" + "Volprog.xml");
+                Volprogcol.Sort();
                 foreach (VolProgramme v in Volprogcol)
                 {
                     if (v.Vol.Compagnie.Code == Compagnie.Code)
@@ -135,7 +136,7 @@ namespace main
 
         private void MenuAbout_Click(object sender, RoutedEventArgs e)
         {
-            new AboutMeCompagnie(Compagnie).ShowDialog();
+            new AboutMe(Compagnie).ShowDialog();
         }
         private void MenuNouveauLog_Click(object sender, RoutedEventArgs e)
         {
@@ -220,5 +221,18 @@ namespace main
         }
 
         #endregion
+
+        private void MenuOption_Click(object sender, RoutedEventArgs e)
+        {
+            var tmp = new Options(Manager);
+            tmp.Show();
+
+            tmp.Valider += Tmp_Valider;
+        }
+
+        private void Tmp_Valider(FlightAndAirportManager m)
+        {
+            Manager = m;
+        }
     }
 }

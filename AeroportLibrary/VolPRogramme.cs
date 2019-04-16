@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AeroportLibrary
 {
-    public class VolProgramme
+    public class VolProgramme : IComparable<VolProgramme>
     {
         #region VARIABLE
         private VolGenerique _vol;
@@ -21,6 +21,13 @@ namespace AeroportLibrary
         public int NombrePassager { get => _nombrepassager; set => _nombrepassager = value; }
         public DateTime DateArrivee { get => DateDepart.Add(Vol.Duree); }
         public int Retard { get => _retard; set => _retard = value; }
+
+        public bool IsRetarded { get
+            {
+                if (Retard == 0)
+                    return false;
+                return true;
+            } }
         #endregion
 
         public VolProgramme()
@@ -48,7 +55,11 @@ namespace AeroportLibrary
         public void AddPassenger(int n)
         {
             NombrePassager += n;
-        } 
+        }
+        public int CompareTo(VolProgramme v)
+        {
+            return Vol.HeureDepart.CompareTo(v.Vol.HeureDepart);
+        }
         #endregion
     }
 }

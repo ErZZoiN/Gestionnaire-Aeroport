@@ -18,9 +18,9 @@ namespace main
     /// <summary>
     /// Logique d'interaction pour AboutMeCompagnie.xaml
     /// </summary>
-    public partial class AboutMeCompagnie : Window
+    public partial class AboutMe : Window
     {
-        public AboutMeCompagnie(CompagnieAerienne c)
+        public AboutMe(CompagnieAerienne c)
         {
             InitializeComponent();
             Title = c.Nom;
@@ -35,6 +35,15 @@ namespace main
             {
 
             }
+        }
+
+        public AboutMe(Aeroport a)
+        {
+            InitializeComponent();
+            Title = a.Nomination;
+            nom.Content = a.Nomination;
+            localisation.Content = a.Ville + " " + a.Pays.Nom;
+            code.Content = a.Code;
         }
     }
 }

@@ -28,7 +28,8 @@
                           Header="About me"
                           Click="MenuAbout_Click"/>
                 <MenuItem Header="Options"
-                          Name="menuOption"/>
+                          Name="menuOption"
+                          Click="MenuOption_Click"/>
             </MenuItem>
         </Menu>
         <ToolBar>

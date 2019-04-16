@@ -9,21 +9,20 @@
     <StackPanel>
         <Menu>
             <MenuItem Header="Fichier">
-                <MenuItem Header="Sauvegarder"
-                          Name="menuSauvegarder"/>
-                <MenuItem Header="Charger"
-                          Name="menuCharger"/>
-                <Separator/>
                 <MenuItem Header="Nouveau log"
-                          Name="menuNouveauLog"/>
+                          Name="menuNouveauLog"
+                          Click="MenuNouveauLog_Click"/>
                 <MenuItem Header="Deconnexion"
-                          Name="menuDeconnexion"/>
+                          Name="menuDeconnexion"
+                          Click="MenuDeconnexion_Click"/>
             </MenuItem>
             <MenuItem Header="Outils">
                 <MenuItem Name="menuAbout"
-                          Header="About me"/>
+                          Header="About me"
+                          Click="MenuAbout_Click"/>
                 <MenuItem Header="Options"
-                          Name="menuOption"/>
+                          Name="menuOption"
+                          Click="MenuOption_Click"/>
             </MenuItem>
         </Menu>
         <ToolBar>
@@ -40,11 +39,11 @@
                     <DataGridTextColumn.CellStyle>
                         <Style TargetType="DataGridCell">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=Retard}" Value="0">
+                                <DataTrigger Binding="{Binding Path=IsRetarded}" Value="false">
                                     <Setter Property="Content" Value="ON TIME"/>
                                     <Setter Property="Background" Value="White"/>
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding Path=Retard}" Value="5">
+                                <DataTrigger Binding="{Binding Path=IsRetarded}" Value="true">
                                     <Setter Property="Content" Value="{Binding Path=Retard}"/>
                                     <Setter Property="Background" Value="Red"/>
                                 </DataTrigger>
@@ -57,9 +56,10 @@
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center">
             <Button Name="retarder"
-                    Content="Retarder"/>
+                    Content="Retarder +5"
+                    Click="Retarder_Click"/>
             <Button Name="annuler"
-                    Content="Annuler"/>
+                    Content="Annuler le vol"/>
         </StackPanel>
     </StackPanel>
 </Window>

@@ -73,11 +73,10 @@ namespace AeroportLibrary
             set { HeureDepart = new TimeSpan(value); }
         }
 
+        #endregion
         public int CompareTo(VolGenerique v)
         {
             return HeureDepart.CompareTo(v.HeureDepart);
         }
-
-        #endregion
     }
 }
