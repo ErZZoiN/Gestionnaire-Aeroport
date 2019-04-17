@@ -66,6 +66,9 @@ namespace main
             return false;
         }
 
+        //Cette fonction initialise les différentes variables du manager
+        //En fonction du code rentré : il récupère le workspace global,
+        //Le dossier d'image et le workspace du compte utilisateur.
         public void Init(string code)
         {
             Code = code;
@@ -88,6 +91,7 @@ namespace main
                 case 3:
                     Mykey = Mykey.CreateSubKey("Code aeroport");
                     break;
+                default: return; //Cette possibilité arrive lorsqu'on se connecte avec le login admin
             }
             Mykey = Mykey.CreateSubKey(Code);
 
@@ -108,6 +112,10 @@ namespace main
             Workspace = (string)Mykey.GetValue("Workspace");
         }
 
+
+        //Est appelé lorsqu'un nouveau compte doit être créé. Il demande
+        //une confirmation du mot de passe, puis créé une nouvelle entrée
+        //dans la Registry.
         public bool NouveauLog(string code,string password, string login)
         {
             Mykey = Registry.CurrentUser.CreateSubKey("Software");
@@ -122,13 +130,12 @@ namespace main
                 case 3:
                     Mykey = Mykey.CreateSubKey("Code aeroport");
                     break;
-                default: return false;
+                default: return false; //Ne devrait JAMAIS arriver
             }
             Mykey = Mykey.CreateSubKey(code);
 
-            PasswordConfirm pw = new PasswordConfirm(password, this);
-            pw.ShowDialog();
-            if (Confirmation)
+            new PasswordConfirm(password, this).ShowDialog();
+            if (Confirmation) //Confirmation est modifié par le PasswordConfirm
             {
                 Mykey.SetValue(login, password);
                 return true;

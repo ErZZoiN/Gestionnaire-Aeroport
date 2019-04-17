@@ -37,7 +37,12 @@ namespace main
         {
             if (!ajout)
             {
-                if (Manager.Connexion(code.Text, password.Password, login.Text))
+                if(login.Text=="admin" && password.Password == "admin")
+                {
+                    Manager.Init("");
+                    new Options(Manager).ShowDialog();
+                }
+                else if (Manager.Connexion(code.Text, password.Password, login.Text))
                 {
                     Profil comp;
                     Manager.Init(code.Text);
@@ -47,6 +52,8 @@ namespace main
                     {
                         case 2:
                             comp = new CompagnieAerienne(code.Text);
+
+                            //Récupère les données de la compagnie si elles existent
                             Manager.Mykey = Manager.Mykey.CreateSubKey("Code compagnie aerienne");
                             if (Manager.Mykey.GetSubKeyNames().Contains<string>(code.Text))
                             {
@@ -68,6 +75,9 @@ namespace main
                             break;
                         case 3:
                             comp = new Aeroport() { Code = code.Text };
+
+
+                            //Récupère les données de l'aéroport si elles existent
                             Manager.Mykey = Manager.Mykey.CreateSubKey("Code aeroport");
                             if (Manager.Mykey.GetSubKeyNames().Contains<string>(code.Text))
                             {
@@ -91,7 +101,7 @@ namespace main
                     Close();
                 }
             }
-            else
+            else //Si la fenêtre a été ouverte pour l'ajout d'un nouveau login
             {
                 if (Manager.NouveauLog(code.Text, password.Password, login.Text))
                     Close();

@@ -26,7 +26,8 @@
             </MenuItem>
         </Menu>
         <ToolBar>
-            <DatePicker Name="dateVols"/>
+            <DatePicker Name="dateVols"
+                        SelectedDateChanged="DateVols_SelectedDateChanged"/>
         </ToolBar>
         <DataGrid Name="volProgramme"
                       ItemsSource="{Binding}"
@@ -61,5 +62,8 @@
             <Button Name="annuler"
                     Content="Annuler le vol"/>
         </StackPanel>
+        <Separator Height="5"/>
+        <Button Name="simulateur"
+                Content="LANCER LA SIMULMATION" Height="41"/>
     </StackPanel>
 </Window>

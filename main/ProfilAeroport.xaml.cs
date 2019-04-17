@@ -15,12 +15,14 @@ namespace main
         private FlightAndAirportManager _manager;
         private ListeVols<VolProgramme> _volprogcol;
         private ObservableCollection<VolProgramme> _volprogaffiche;
+        private ObservableCollection<VolProgramme> _volprogconcerne;
         #endregion
         public ProfilAeroport(FlightAndAirportManager m)
         {
             Manager = m;
             Volprogcol = new ListeVols<VolProgramme>();
             Volprogaffiche = new ObservableCollection<VolProgramme>();
+            Volprogconcerne = new ObservableCollection<VolProgramme>();
             Monaeroport = new Aeroport();
             InitializeComponent();
             volProgramme.DataContext = Volprogaffiche;
@@ -42,13 +44,14 @@ namespace main
                 {
                     if (v.Vol.AeroportArrivee.Code == Monaeroport.Code)
                     {
-                        Volprogaffiche.Add(v);
+                        Volprogconcerne.Add(v);
                     }
                 }
 
-                foreach (VolProgramme v in Volprogaffiche)
+                foreach (VolProgramme v in Volprogconcerne)
                 {
                     Volprogcol.Remove(v);
+                    Volprogaffiche.Add(v);
                 }
 
             }
@@ -72,8 +75,10 @@ namespace main
         public ListeVols<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
         public ObservableCollection<VolProgramme> Volprogaffiche { get => _volprogaffiche; set => _volprogaffiche = value; }
         public Aeroport Monaeroport { get => _monaeroport; set => _monaeroport = value; }
+        public ObservableCollection<VolProgramme> Volprogconcerne { get => _volprogconcerne; set => _volprogconcerne = value; }
         #endregion
 
+        //TODO : réparer ce code de marde
         private void Retarder_Click(object sender, RoutedEventArgs e)
         {
             if (volProgramme.SelectedItem != null)
@@ -112,6 +117,15 @@ namespace main
         private void Tmp_Valider(FlightAndAirportManager m)
         {
             Manager = m;
+        }
+
+        //On modifie l'affichage
+        private void DateVols_SelectedDateChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            Volprogaffiche.Clear();
+            foreach (VolProgramme v in Volprogconcerne)
+                if (v.DateDepart.Equals(dateVols.SelectedDate.Value))
+                    Volprogaffiche.Add(v);
         }
     }
 }
