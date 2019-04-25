@@ -60,10 +60,12 @@
                     Content="Retarder +5"
                     Click="Retarder_Click"/>
             <Button Name="annuler"
-                    Content="Annuler le vol"/>
+                    Content="Annuler le vol"
+                    Click="Annuler_Click"/>
         </StackPanel>
         <Separator Height="5"/>
         <Button Name="simulateur"
-                Content="LANCER LA SIMULMATION" Height="41"/>
+                Content="LANCER LA SIMULMATION" Height="41"
+                Click="Simulateur_Click"/>
     </StackPanel>
 </Window>

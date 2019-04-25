@@ -1,0 +1,52 @@
+﻿<Window x:Class="main.Simulateur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:main"
+        mc:Ignorable="d"
+        Title="Simulateur" Height="450" Width="800">
+    <StackPanel>
+        <Label Name="aeroport"
+               Content="NOM AEROPORT"
+               HorizontalAlignment="Center"/>
+        <Separator/>
+        <StackPanel Orientation="Horizontal">
+            <Label Name="Date"
+                   Content="DATE"/>
+            <Label Name="vitesse"
+                   Content="VITESSE"/>
+        </StackPanel>
+        <Separator/>
+        <Label Name="time"
+               Content="TIME"/>
+        <DataGrid Name="mainGrid"
+                  ItemsSource="{Binding}"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Vol" Binding="{Binding Path=Vol.Identifiant}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Nombre de passager" Binding="{Binding Path=NombrePassager}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Depart" Binding="{Binding Path=DateDepart}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Retard" Binding="{Binding Path=Retard}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Statut" Binding="{Binding Path=Status}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+            <!--<DataGridRow>
+                <DataGridRow.Style>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=Status}" Value="BOARDING">
+                                <Setter Property="Background" Value="LightGreen"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=Status}" Value="LASTCALL">
+                                <Setter Property="Background" Value="Orange"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Path=Status}" Value="GATE_CLOSED">
+                                <Setter Property="Background" Value="Red"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGridRow.Style>
+            </DataGridRow>-->
+        </DataGrid>
+    </StackPanel>
+</Window>

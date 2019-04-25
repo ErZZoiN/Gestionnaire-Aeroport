@@ -73,6 +73,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SelectionSimulateur.xaml.cs">
+      <DependentUpon>SelectionSimulateur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Simulateur.xaml.cs">
+      <DependentUpon>Simulateur.xaml</DependentUpon>
+    </Compile>
     <Page Include="AboutMe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,6 +125,14 @@
     <Page Include="ProfilCompagnieAerienne.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SelectionSimulateur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Simulateur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

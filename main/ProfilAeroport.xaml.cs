@@ -1,6 +1,7 @@
 ﻿using AeroportLibrary;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace main
@@ -42,7 +43,7 @@ namespace main
                 Volprogcol.Sort();
                 foreach (VolProgramme v in Volprogcol)
                 {
-                    if (v.Vol.AeroportArrivee.Code == Monaeroport.Code)
+                    if (v.Vol.AeroportDepart.Code == Monaeroport.Code)
                     {
                         Volprogconcerne.Add(v);
                     }
@@ -83,9 +84,10 @@ namespace main
         {
             if (volProgramme.SelectedItem != null)
             {
-                foreach (VolProgramme v in (ObservableCollection<VolProgramme>)volProgramme.DataContext)
-                    if (v.Equals(volProgramme.SelectedItem))
-                        v.Retard += 5;
+                foreach (VolProgramme v in volProgramme.SelectedItems.Cast<VolProgramme>().ToList())
+                {
+                    v.Retard += 5;
+                }
             }
         }
         private void MenuNouveauLog_Click(object sender, RoutedEventArgs e)
@@ -126,6 +128,23 @@ namespace main
             foreach (VolProgramme v in Volprogconcerne)
                 if (v.DateDepart.Equals(dateVols.SelectedDate.Value))
                     Volprogaffiche.Add(v);
+        }
+
+        private void Annuler_Click(object sender, RoutedEventArgs e)
+        {
+            if (volProgramme.SelectedItem != null)
+            {
+                foreach (VolProgramme v in volProgramme.SelectedItems.Cast<VolProgramme>().ToList())
+                {
+                    Volprogaffiche.Remove(v);
+                }
+            }
+        }
+
+        private void Simulateur_Click(object sender, RoutedEventArgs e)
+        {
+            var tmp = new Simulateur(Manager);
+            tmp.ShowDialog();
         }
     }
 }

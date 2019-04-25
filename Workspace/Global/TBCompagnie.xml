@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <CompagnieAerienne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Code>TB</Code>
   <Nom>TUI fly Belgium</Nom>
   <Localisation>Anvers</Localisation>
   <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
-  <Code>TB</Code>
 </CompagnieAerienne>

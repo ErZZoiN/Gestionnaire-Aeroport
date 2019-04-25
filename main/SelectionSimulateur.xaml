@@ -1,0 +1,45 @@
+﻿<Window x:Class="main.SelectionSimulateur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:main"
+        xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        mc:Ignorable="d"
+        Title="SelectionSimulateur" Height="155" Width="490">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Date et heure de debut : "/>
+        <Label Content="Duree de la simulation (heures) : " Grid.Row="1"/>
+        <Label Content="Vitesse de la simulation (minute/seconde) : "  Grid.Row="2"/>
+        <wpfTool:DateTimePicker Name="debut"
+            Grid.Column="1"/>
+        <TextBox Name="duree"
+            Grid.Column="1"
+                 Grid.Row="1"/>
+        <TextBox Name="vitesse"
+            Grid.Column="1"
+                 Grid.Row="2"/>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+            <Button Name="valider"
+                    Content="Valider"
+                    Click="Valider_Click"/>
+            <Button Name="annuler"
+                    Content="Annuler"
+                    Click="Annuler_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
