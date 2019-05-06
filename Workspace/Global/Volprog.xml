@@ -3,48 +3,6 @@
   <VolProgramme>
     <Vol>
       <AeroportArrivee>
-        <Code>ORY</Code>
-        <Ville>Paris</Ville>
-        <Pays>
-          <Nom>France</Nom>
-          <Code>
-            <char>70</char>
-            <char>82</char>
-            <char>65</char>
-          </Code>
-          <FuseauGMT>2</FuseauGMT>
-        </Pays>
-      </AeroportArrivee>
-      <AeroportDepart>
-        <Code>BRU</Code>
-        <Ville>Bruxelles</Ville>
-        <Pays>
-          <Nom>Belgique</Nom>
-          <Code>
-            <char>66</char>
-            <char>69</char>
-            <char>76</char>
-          </Code>
-          <FuseauGMT>2</FuseauGMT>
-        </Pays>
-      </AeroportDepart>
-      <Compagnie>
-        <Code>TB</Code>
-        <Nom>TUI fly Belgium</Nom>
-        <Localisation>Anvers</Localisation>
-        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
-      </Compagnie>
-      <Numero>1011</Numero>
-      <HeureArrivee>418240000000</HeureArrivee>
-      <HeureDepart>353420000000</HeureDepart>
-    </Vol>
-    <DateDepart>2019-05-02T07:37:26</DateDepart>
-    <NombrePassager>120</NombrePassager>
-    <Retard>5</Retard>
-  </VolProgramme>
-  <VolProgramme>
-    <Vol>
-      <AeroportArrivee>
         <Code>JFK</Code>
         <Ville>New York</Ville>
         <Pays>
@@ -87,16 +45,16 @@
   <VolProgramme>
     <Vol>
       <AeroportArrivee>
-        <Code>JFK</Code>
-        <Ville>New York</Ville>
+        <Code>ORY</Code>
+        <Ville>Paris</Ville>
         <Pays>
-          <Nom>Etats-unis</Nom>
+          <Nom>France</Nom>
           <Code>
-            <char>85</char>
-            <char>83</char>
+            <char>70</char>
+            <char>82</char>
             <char>65</char>
           </Code>
-          <FuseauGMT>-4</FuseauGMT>
+          <FuseauGMT>2</FuseauGMT>
         </Pays>
       </AeroportArrivee>
       <AeroportDepart>
@@ -118,13 +76,13 @@
         <Localisation>Anvers</Localisation>
         <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
       </Compagnie>
-      <Numero>1009</Numero>
-      <HeureArrivee>820890000000</HeureArrivee>
-      <HeureDepart>384050000000</HeureDepart>
+      <Numero>1011</Numero>
+      <HeureArrivee>418240000000</HeureArrivee>
+      <HeureDepart>353420000000</HeureDepart>
     </Vol>
-    <DateDepart>2019-05-02T18:41:05</DateDepart>
-    <NombrePassager>110</NombrePassager>
-    <Retard>0</Retard>
+    <DateDepart>2019-05-02T07:37:26</DateDepart>
+    <NombrePassager>120</NombrePassager>
+    <Retard>5</Retard>
   </VolProgramme>
   <VolProgramme>
     <Vol>
@@ -213,48 +171,6 @@
   <VolProgramme>
     <Vol>
       <AeroportArrivee>
-        <Code>BER</Code>
-        <Ville>Berlin</Ville>
-        <Pays>
-          <Nom>Allemagne</Nom>
-          <Code>
-            <char>71</char>
-            <char>69</char>
-            <char>82</char>
-          </Code>
-          <FuseauGMT>2</FuseauGMT>
-        </Pays>
-      </AeroportArrivee>
-      <AeroportDepart>
-        <Code>BRU</Code>
-        <Ville>Bruxelles</Ville>
-        <Pays>
-          <Nom>Belgique</Nom>
-          <Code>
-            <char>66</char>
-            <char>69</char>
-            <char>76</char>
-          </Code>
-          <FuseauGMT>2</FuseauGMT>
-        </Pays>
-      </AeroportDepart>
-      <Compagnie>
-        <Code>TB</Code>
-        <Nom>TUI fly Belgium</Nom>
-        <Localisation>Anvers</Localisation>
-        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
-      </Compagnie>
-      <Numero>1005</Numero>
-      <HeureArrivee>420920000000</HeureArrivee>
-      <HeureDepart>392680000000</HeureDepart>
-    </Vol>
-    <DateDepart>2019-05-02T21:48:04</DateDepart>
-    <NombrePassager>140</NombrePassager>
-    <Retard>0</Retard>
-  </VolProgramme>
-  <VolProgramme>
-    <Vol>
-      <AeroportArrivee>
         <Code>MAD</Code>
         <Ville>Madrid</Ville>
         <Pays>
@@ -297,6 +213,90 @@
   <VolProgramme>
     <Vol>
       <AeroportArrivee>
+        <Code>JFK</Code>
+        <Ville>New York</Ville>
+        <Pays>
+          <Nom>Etats-unis</Nom>
+          <Code>
+            <char>85</char>
+            <char>83</char>
+            <char>65</char>
+          </Code>
+          <FuseauGMT>-4</FuseauGMT>
+        </Pays>
+      </AeroportArrivee>
+      <AeroportDepart>
+        <Code>BRU</Code>
+        <Ville>Bruxelles</Ville>
+        <Pays>
+          <Nom>Belgique</Nom>
+          <Code>
+            <char>66</char>
+            <char>69</char>
+            <char>76</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportDepart>
+      <Compagnie>
+        <Code>TB</Code>
+        <Nom>TUI fly Belgium</Nom>
+        <Localisation>Anvers</Localisation>
+        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
+      </Compagnie>
+      <Numero>1009</Numero>
+      <HeureArrivee>820890000000</HeureArrivee>
+      <HeureDepart>384050000000</HeureDepart>
+    </Vol>
+    <DateDepart>2019-05-02T18:41:05</DateDepart>
+    <NombrePassager>110</NombrePassager>
+    <Retard>0</Retard>
+  </VolProgramme>
+  <VolProgramme>
+    <Vol>
+      <AeroportArrivee>
+        <Code>BER</Code>
+        <Ville>Berlin</Ville>
+        <Pays>
+          <Nom>Allemagne</Nom>
+          <Code>
+            <char>71</char>
+            <char>69</char>
+            <char>82</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportArrivee>
+      <AeroportDepart>
+        <Code>BRU</Code>
+        <Ville>Bruxelles</Ville>
+        <Pays>
+          <Nom>Belgique</Nom>
+          <Code>
+            <char>66</char>
+            <char>69</char>
+            <char>76</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportDepart>
+      <Compagnie>
+        <Code>TB</Code>
+        <Nom>TUI fly Belgium</Nom>
+        <Localisation>Anvers</Localisation>
+        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
+      </Compagnie>
+      <Numero>1005</Numero>
+      <HeureArrivee>420920000000</HeureArrivee>
+      <HeureDepart>392680000000</HeureDepart>
+    </Vol>
+    <DateDepart>2019-05-02T21:48:04</DateDepart>
+    <NombrePassager>140</NombrePassager>
+    <Retard>0</Retard>
+  </VolProgramme>
+  <VolProgramme>
+    <Vol>
+      <AeroportArrivee>
         <Code>TNG</Code>
         <Ville>Tanger</Ville>
         <Pays>
@@ -334,6 +334,48 @@
     </Vol>
     <DateDepart>2019-05-02T23:45:43</DateDepart>
     <NombrePassager>115</NombrePassager>
+    <Retard>0</Retard>
+  </VolProgramme>
+  <VolProgramme>
+    <Vol>
+      <AeroportArrivee>
+        <Code>BER</Code>
+        <Ville>Berlin</Ville>
+        <Pays>
+          <Nom>Allemagne</Nom>
+          <Code>
+            <char>71</char>
+            <char>69</char>
+            <char>82</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportArrivee>
+      <AeroportDepart>
+        <Code>BRU</Code>
+        <Ville>Bruxelles</Ville>
+        <Pays>
+          <Nom>Belgique</Nom>
+          <Code>
+            <char>66</char>
+            <char>69</char>
+            <char>76</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportDepart>
+      <Compagnie>
+        <Code>SN</Code>
+        <Nom>Brussels Airlines</Nom>
+        <Localisation>Bruxelles</Localisation>
+        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\SN\Logo.png</Image>
+      </Compagnie>
+      <Numero>1012</Numero>
+      <HeureArrivee>499470000000</HeureArrivee>
+      <HeureDepart>439430000000</HeureDepart>
+    </Vol>
+    <DateDepart>2019-05-03T02:28:36</DateDepart>
+    <NombrePassager>160</NombrePassager>
     <Retard>0</Retard>
   </VolProgramme>
   <VolProgramme>
@@ -423,90 +465,6 @@
   <VolProgramme>
     <Vol>
       <AeroportArrivee>
-        <Code>BCN</Code>
-        <Ville>Barcelone</Ville>
-        <Pays>
-          <Nom>Espagne</Nom>
-          <Code>
-            <char>69</char>
-            <char>83</char>
-            <char>80</char>
-          </Code>
-          <FuseauGMT>2</FuseauGMT>
-        </Pays>
-      </AeroportArrivee>
-      <AeroportDepart>
-        <Code>BRU</Code>
-        <Ville>Bruxelles</Ville>
-        <Pays>
-          <Nom>Belgique</Nom>
-          <Code>
-            <char>66</char>
-            <char>69</char>
-            <char>76</char>
-          </Code>
-          <FuseauGMT>2</FuseauGMT>
-        </Pays>
-      </AeroportDepart>
-      <Compagnie>
-        <Code>TB</Code>
-        <Nom>TUI fly Belgium</Nom>
-        <Localisation>Anvers</Localisation>
-        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
-      </Compagnie>
-      <Numero>1007</Numero>
-      <HeureArrivee>496350000000</HeureArrivee>
-      <HeureDepart>431490000000</HeureDepart>
-    </Vol>
-    <DateDepart>2019-05-03T11:48:57</DateDepart>
-    <NombrePassager>210</NombrePassager>
-    <Retard>0</Retard>
-  </VolProgramme>
-  <VolProgramme>
-    <Vol>
-      <AeroportArrivee>
-        <Code>BER</Code>
-        <Ville>Berlin</Ville>
-        <Pays>
-          <Nom>Allemagne</Nom>
-          <Code>
-            <char>71</char>
-            <char>69</char>
-            <char>82</char>
-          </Code>
-          <FuseauGMT>2</FuseauGMT>
-        </Pays>
-      </AeroportArrivee>
-      <AeroportDepart>
-        <Code>BRU</Code>
-        <Ville>Bruxelles</Ville>
-        <Pays>
-          <Nom>Belgique</Nom>
-          <Code>
-            <char>66</char>
-            <char>69</char>
-            <char>76</char>
-          </Code>
-          <FuseauGMT>2</FuseauGMT>
-        </Pays>
-      </AeroportDepart>
-      <Compagnie>
-        <Code>SN</Code>
-        <Nom>Brussels Airlines</Nom>
-        <Localisation>Bruxelles</Localisation>
-        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\SN\Logo.png</Image>
-      </Compagnie>
-      <Numero>1012</Numero>
-      <HeureArrivee>499470000000</HeureArrivee>
-      <HeureDepart>439430000000</HeureDepart>
-    </Vol>
-    <DateDepart>2019-05-03T02:28:36</DateDepart>
-    <NombrePassager>160</NombrePassager>
-    <Retard>0</Retard>
-  </VolProgramme>
-  <VolProgramme>
-    <Vol>
-      <AeroportArrivee>
         <Code>CRL</Code>
         <Ville>Charleroi</Ville>
         <Pays>
@@ -544,6 +502,48 @@
     </Vol>
     <DateDepart>2019-05-03T10:33:36</DateDepart>
     <NombrePassager>110</NombrePassager>
+    <Retard>0</Retard>
+  </VolProgramme>
+  <VolProgramme>
+    <Vol>
+      <AeroportArrivee>
+        <Code>BCN</Code>
+        <Ville>Barcelone</Ville>
+        <Pays>
+          <Nom>Espagne</Nom>
+          <Code>
+            <char>69</char>
+            <char>83</char>
+            <char>80</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportArrivee>
+      <AeroportDepart>
+        <Code>BRU</Code>
+        <Ville>Bruxelles</Ville>
+        <Pays>
+          <Nom>Belgique</Nom>
+          <Code>
+            <char>66</char>
+            <char>69</char>
+            <char>76</char>
+          </Code>
+          <FuseauGMT>2</FuseauGMT>
+        </Pays>
+      </AeroportDepart>
+      <Compagnie>
+        <Code>TB</Code>
+        <Nom>TUI fly Belgium</Nom>
+        <Localisation>Anvers</Localisation>
+        <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\TB\logo.JPG</Image>
+      </Compagnie>
+      <Numero>1007</Numero>
+      <HeureArrivee>496350000000</HeureArrivee>
+      <HeureDepart>431490000000</HeureDepart>
+    </Vol>
+    <DateDepart>2019-05-03T11:48:57</DateDepart>
+    <NombrePassager>210</NombrePassager>
     <Retard>0</Retard>
   </VolProgramme>
 </ArrayOfVolProgramme>

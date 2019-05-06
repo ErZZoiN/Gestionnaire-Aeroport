@@ -1,5 +1,6 @@
 ﻿using AeroportLibrary;
 using Microsoft.Win32;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace main
             ajout = false;
             Manager = new FlightAndAirportManager();
             InitializeComponent();
+            Console.WriteLine("coucou");
         }
 
         public MainWindow(Profil c)

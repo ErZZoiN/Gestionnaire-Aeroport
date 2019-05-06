@@ -31,7 +31,7 @@ namespace main
         private Aeroport _monaeroport;
         private FlightAndAirportManager _manager;
         private ListeVols<VolProgramme> _volprogcol;
-        private ObservableCollection<VolProgramme> _volprogaffiche;
+        private ListeVols<VolProgramme> _volprogaffiche;
         private Timer _ticker;
         static int nbrtick=0;
         #endregion
@@ -39,12 +39,14 @@ namespace main
         {
             #region Initialisation
             Manager = mana;
+            Debut = new DateTime();
+            Currenttime = new DateTime();
             new SelectionSimulateur(this).ShowDialog();
             InitializeComponent();
 
             Monaeroport = new Aeroport();
             Volprogcol = new ListeVols<VolProgramme>();
-            Volprogaffiche = new ObservableCollection<VolProgramme>();
+            Volprogaffiche = new ListeVols<VolProgramme>();
 
             try
             {
@@ -70,6 +72,7 @@ namespace main
             catch (FileNotFoundException) { }
             #endregion
 
+            Volprogaffiche.Sort();
             mainGrid.DataContext = Volprogaffiche;
             Currenttime = Debut;
             aeroport.Content = Monaeroport.Nomination.ToUpper();
@@ -87,14 +90,37 @@ namespace main
         private void Ticker_Tick(object sender, EventArgs e)
         {
             nbrtick += 1;
-            Currenttime.AddMinutes(Vitesse);
+            Currenttime = Currenttime.AddMinutes(Vitesse);
             time.Content = Currenttime.ToShortTimeString();
 
+            List<VolProgramme> tmp = new List<VolProgramme>();
+
             foreach (VolProgramme v in Volprogaffiche)
+            {
                 v.setState(Currenttime);
+                if (v.Status == VolProgramme.STATE.FLYING)
+                    tmp.Add(v);
+            }
+
+            //On supprime les vols partis
+            //l'utilisation d'une liste tampon est
+            //obligatoire : on ne peut pas
+            //modifier une liste pendant qu'on la parcourt.
+            foreach(VolProgramme v in tmp)
+            {
+                Volprogaffiche.Remove(v);
+            }
+
+            Volprogaffiche.Sort();
+
+            mainGrid.DataContext = null;
+            mainGrid.DataContext = Volprogaffiche;
 
             if ((nbrtick * Vitesse) / 60 >= Duree)
+            {
+                Console.WriteLine("FIN SIMULATION");
                 Ticker.Stop();
+            }
         }
 
         #region PROPRIETE
@@ -102,7 +128,7 @@ namespace main
         public int Vitesse { get => _vitesse; set => _vitesse = value; }
         public DateTime Debut { get => _debut; set => _debut = value; }
         public ListeVols<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
-        public ObservableCollection<VolProgramme> Volprogaffiche { get => _volprogaffiche; set => _volprogaffiche = value; }
+        public ListeVols<VolProgramme> Volprogaffiche { get => _volprogaffiche; set => _volprogaffiche = value; }
         public FlightAndAirportManager Manager { get => _manager; set => _manager = value; }
         public Aeroport Monaeroport { get => _monaeroport; set => _monaeroport = value; }
         public Timer Ticker { get => _ticker; set => _ticker = value; }

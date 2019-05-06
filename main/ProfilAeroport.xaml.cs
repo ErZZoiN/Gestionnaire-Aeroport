@@ -1,4 +1,5 @@
 ﻿using AeroportLibrary;
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -144,7 +145,12 @@ namespace main
         private void Simulateur_Click(object sender, RoutedEventArgs e)
         {
             var tmp = new Simulateur(Manager);
-            tmp.ShowDialog();
+            try
+            {
+                tmp.ShowDialog();
+            }
+            catch(InvalidOperationException)
+            { }
         }
     }
 }

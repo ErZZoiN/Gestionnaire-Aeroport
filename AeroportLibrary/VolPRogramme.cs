@@ -63,7 +63,11 @@ namespace AeroportLibrary
         }
         public int CompareTo(VolProgramme v)
         {
-            return Vol.HeureDepart.CompareTo(v.Vol.HeureDepart);
+            if (DateDepart.CompareTo(v.DateDepart) == 0)
+            {
+                return Vol.HeureDepart.CompareTo(v.Vol.HeureDepart);
+            }
+            else return DateDepart.CompareTo(v.DateDepart);
         }
 
         public void setState(DateTime tempsCourant)
