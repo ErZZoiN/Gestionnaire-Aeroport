@@ -29,6 +29,8 @@ TODO :
 
 --Chargement/sauvegarde de vols génériques au format texte
 
+--limiter le nombres de vols dans le simulateur ?
+
 --Barres de recherches (optionnelles)
 
 ______________________________________________________
@@ -36,8 +38,6 @@ ______________________________________________________
 
 BUGS :
 
---Affichage Simulateur pas à jour
-
---Triggers de Retard ne met pas à jour
+--Triggers de Retard/couleur (aeroport/sim) ne met pas à jour
 
 --Exception triggers Simulateur
