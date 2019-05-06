@@ -20,6 +20,8 @@ FONCTIONNALITES :
 
 --Retarder les avions (TODO : affichage correct)
 
+--Simulateur
+
 _______________________________________________________
 _______________________________________________________
 
@@ -29,7 +31,13 @@ TODO :
 
 --Barres de recherches (optionnelles)
 
---SIMULATEUR
+______________________________________________________
+______________________________________________________
 
-______________________________________________________
-______________________________________________________
+BUGS :
+
+--Affichage Simulateur pas à jour
+
+--Triggers de Retard ne met pas à jour
+
+--Exception triggers Simulateur
