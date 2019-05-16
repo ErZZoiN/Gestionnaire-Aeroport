@@ -46,7 +46,7 @@ namespace AeroportLibrary
         public static Aeroport BARCELONE = new Aeroport("BCN", "Barcelone", Pays.ESPAGNE);
         public static Aeroport[] LISTEAEROPORT = { BRUXELLES, CHARLEROI, KENNEDY, BERLIN, TANGER, MARRAKESH, ORLY, MARSEILLE, MADRID, BARCELONE };
 
-        public override void Load(string path)
+        public override void LoadFromXML(string path)
         {
             System.Xml.Serialization.XmlSerializer xmlFormat = new System.Xml.Serialization.XmlSerializer(typeof(Aeroport));
             using (Stream fStream = File.OpenRead(path))
@@ -58,7 +58,7 @@ namespace AeroportLibrary
             }
         }
 
-        public override void Save(string path)
+        public override void SaveInXML(string path)
         {
             System.Xml.Serialization.XmlSerializer xmlformat = new System.Xml.Serialization.XmlSerializer(typeof(Aeroport));
             using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.ComponentModel;
 
 namespace AeroportLibrary
 {
-    public class VolGenerique : IComparable<VolGenerique>
+    public class VolGenerique : IComparable<VolGenerique>, INotifyPropertyChanged
     {
         #region VARIABLE
         private int _numero;
@@ -25,12 +26,12 @@ namespace AeroportLibrary
         public TimeSpan HeureArrivee { get => _heurearrivee; set => _heurearrivee = value; }
 
         [XmlIgnore]
-        public TimeSpan HeureDepart { get => _heuredepart; set => _heuredepart = value; }
+        public TimeSpan HeureDepart { get => _heuredepart; set { _heuredepart = value; OnPropertyChanged("heuredep"); } }
 
         public Aeroport AeroportArrivee { get => _aeroportarrivee; set => _aeroportarrivee = value; }
         public Aeroport AeroportDepart { get => _aeroportdepart; set => _aeroportdepart = value; }
         public CompagnieAerienne Compagnie { get => _compagnie; set => _compagnie = value; }
-        public int Numero { get => _numero; set => _numero = value; }
+        public int Numero { get => _numero; set { _numero = value; OnPropertyChanged("numero"); } }
         public string Identifiant { get => Compagnie.Code.ToString() + Numero.ToString(); }
         public TimeSpan Duree { get
                 { TimeSpan tmp = new TimeSpan((AeroportDepart.Pays.FuseauGMT - AeroportArrivee.Pays.FuseauGMT), 0, 0);
@@ -77,6 +78,17 @@ namespace AeroportLibrary
         public int CompareTo(VolGenerique v)
         {
             return HeureDepart.CompareTo(v.HeureDepart);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
     }
 }

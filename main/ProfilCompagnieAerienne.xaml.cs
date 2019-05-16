@@ -37,14 +37,14 @@ namespace main
 
             try
             {
-                Compagnie.Load(Manager.Datapath + "\\" + Manager.Code + "Compagnie.xml");
+                Compagnie.LoadFromXML(Manager.Datapath + "\\" + Manager.Code + "Compagnie.xml");
             }
             catch (FileNotFoundException)
             {
                 Compagnie.Code = Manager.Code;
             }
 
-            //Pour afficher uniquement les vols génériques désirés,
+            //Pour afficher uniquement les vols programmés désirés,
             //On prend la liste complète, dont on retire les éléments
             //voulus pour les rajouter dans la liste effectivement
             //affichée.
@@ -53,7 +53,7 @@ namespace main
             //au lancement.
             try
             {
-                Volprogcol.Load(Manager.Datapath + "\\" + "Volprog.xml");
+                Volprogcol.LoadFromXML(Manager.Datapath + "\\" + "Volprog.xml");
                 Volprogcol.Sort();
                 foreach (VolProgramme v in Volprogcol)
                 {
@@ -70,6 +70,8 @@ namespace main
 
             }
             catch (FileNotFoundException) { }
+
+            volGenerique.ItemsSource = Volgencol;
 
             Closed += ProfilCompagnieAerienne_Closed;
         }
@@ -163,7 +165,7 @@ namespace main
 
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    Volgencol.Save(dialog.FileName);
+                    Volgencol.SaveInXML(dialog.FileName);
                 }
             }
         }
@@ -177,7 +179,37 @@ namespace main
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Volgencol.Load(dialog.FileName);
+                Volgencol.LoadFromXML(dialog.FileName);
+            }
+        }
+
+        private void MenuImport_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                InitialDirectory = Workspace
+            };
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Volgencol.LoadFromCSV(dialog.FileName);
+            }
+        }
+
+        private void MenuExport_Click(object sender, RoutedEventArgs e)
+        {
+            using (SaveFileDialog dialog = new SaveFileDialog
+            {
+                InitialDirectory = Workspace
+            })
+            {
+                dialog.AddExtension = true;
+                dialog.DefaultExt = ".csv";
+
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    Volgencol.SaveInCSV(dialog.FileName);
+                }
             }
         }
         #endregion
@@ -209,15 +241,15 @@ namespace main
 
         private void ProfilCompagnieAerienne_Closed(object sender, EventArgs e)
         {
-            Compagnie.Save(Manager.Datapath + "\\" + Compagnie.Code + "Compagnie.xml");
-            Volgencol.Save(Manager.Workspace + "\\" + Compagnie.Code + "Volgen.xml");
+            Compagnie.SaveInXML(Manager.Datapath + "\\" + Compagnie.Code + "Compagnie.xml");
+            Volgencol.SaveInXML(Manager.Workspace + "\\" + Compagnie.Code + "Volgen.xml");
 
             foreach (VolProgramme v in Volprogaffiche)
             {
                 Volprogcol.Add(v);
             }
 
-            Volprogcol.Save(Manager.Datapath + "\\" + "Volprog.xml");
+            Volprogcol.SaveInXML(Manager.Datapath + "\\" + "Volprog.xml");
         }
 
         #endregion

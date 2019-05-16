@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<ArrayOfVolGenerique xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <VolGenerique>
+    <AeroportArrivee>
+      <Code>TNG</Code>
+      <Ville>Tanger</Ville>
+      <Pays>
+        <Nom>Maroc</Nom>
+        <Code>
+          <char>77</char>
+          <char>65</char>
+          <char>82</char>
+        </Code>
+        <FuseauGMT>1</FuseauGMT>
+      </Pays>
+    </AeroportArrivee>
+    <AeroportDepart>
+      <Code>BER</Code>
+      <Ville>Berlin</Ville>
+      <Pays>
+        <Nom>Allemagne</Nom>
+        <Code>
+          <char>71</char>
+          <char>69</char>
+          <char>82</char>
+        </Code>
+        <FuseauGMT>2</FuseauGMT>
+      </Pays>
+    </AeroportDepart>
+    <Compagnie>
+      <Code>FR</Code>
+      <Nom />
+      <Localisation />
+      <Image />
+    </Compagnie>
+    <Numero>1212</Numero>
+    <HeureArrivee>469480000000</HeureArrivee>
+    <HeureDepart>367920000000</HeureDepart>
+  </VolGenerique>
+  <VolGenerique>
+    <AeroportArrivee>
+      <Code>JFK</Code>
+      <Ville>New York</Ville>
+      <Pays>
+        <Nom>Etats-unis</Nom>
+        <Code>
+          <char>85</char>
+          <char>83</char>
+          <char>65</char>
+        </Code>
+        <FuseauGMT>-4</FuseauGMT>
+      </Pays>
+    </AeroportArrivee>
+    <AeroportDepart>
+      <Code>BRU</Code>
+      <Ville>Bruxelles</Ville>
+      <Pays>
+        <Nom>Belgique</Nom>
+        <Code>
+          <char>66</char>
+          <char>69</char>
+          <char>76</char>
+        </Code>
+        <FuseauGMT>2</FuseauGMT>
+      </Pays>
+    </AeroportDepart>
+    <Compagnie>
+      <Code>FR</Code>
+      <Nom />
+      <Localisation />
+      <Image />
+    </Compagnie>
+    <Numero>1001</Numero>
+    <HeureArrivee>81900000000</HeureArrivee>
+    <HeureDepart>771200000000</HeureDepart>
+  </VolGenerique>
+</ArrayOfVolGenerique>

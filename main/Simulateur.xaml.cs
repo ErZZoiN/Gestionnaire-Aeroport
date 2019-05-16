@@ -50,7 +50,7 @@ namespace main
 
             try
             {
-                Monaeroport.Load(Manager.Datapath + "\\" + Manager.Code + "Aeroport.xml");
+                Monaeroport.LoadFromXML(Manager.Datapath + "\\" + Manager.Code + "Aeroport.xml");
             }
             catch (FileNotFoundException)
             {
@@ -59,7 +59,7 @@ namespace main
 
             try
             {
-                Volprogcol.Load(Manager.Datapath + "\\" + "Volprog.xml");
+                Volprogcol.LoadFromXML(Manager.Datapath + "\\" + "Volprog.xml");
                 Volprogcol.Sort();
                 foreach (VolProgramme v in Volprogcol)
                 {
@@ -98,7 +98,7 @@ namespace main
             foreach (VolProgramme v in Volprogaffiche)
             {
                 v.setState(Currenttime);
-                if (v.Status == VolProgramme.STATE.FLYING)
+                if (v.Status == STATE.FLYING)
                     tmp.Add(v);
             }
 

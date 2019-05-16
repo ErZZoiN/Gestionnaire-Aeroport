@@ -12,7 +12,7 @@ namespace AeroportLibrary
 
         public string Code { get => _code; set => _code = value; }
 
-        public abstract void Load(string path);
-        public abstract void Save(string path);
+        public abstract void LoadFromXML(string path);
+        public abstract void SaveInXML(string path);
     }
 }

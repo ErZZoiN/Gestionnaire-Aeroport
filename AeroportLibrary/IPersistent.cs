@@ -8,7 +8,7 @@ namespace AeroportLibrary
 {
     interface IPersistent
     {
-        void Save(string path);
-        void Load(string path);
+        void SaveInXML(string path);
+        void LoadFromXML(string path);
     }
 }

@@ -5,12 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ServiceStack.Text;
 
 namespace AeroportLibrary
 {
     public class ListeVols<T> : ObservableCollection<T>, IPersistent
     {
-        public void Load(string path)
+        public void LoadFromXML(string path)
         {
             System.Xml.Serialization.XmlSerializer xmlFormat = new System.Xml.Serialization.XmlSerializer(typeof(List<T>));
             Clear();
@@ -20,12 +21,35 @@ namespace AeroportLibrary
             }
         }
 
-        public void Save(string path)
+        public void SaveInXML(string path)
         {
             System.Xml.Serialization.XmlSerializer xmlformat = new System.Xml.Serialization.XmlSerializer(typeof(List<T>));
             using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 xmlformat.Serialize(fStream, this.ToList());
+            }
+        }
+
+        public void SaveInCSV(string path)
+        {
+            using (Stream fStream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                fStream.WriteCsv(this);
+            }
+        }
+
+        public void LoadFromCSV(string filename)
+        {
+            string tmp;
+            Clear();
+            using (Stream fStream = File.OpenRead(filename))
+            {
+                StreamReader sr = new StreamReader(fStream);
+                while (!sr.EndOfStream)
+                {
+                    tmp = sr.ReadLine();
+                    Add(CsvSerializer.DeserializeFromString<T>(tmp));
+                }
             }
         }
 

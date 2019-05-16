@@ -37,7 +37,7 @@ namespace AeroportLibrary
             Image = "";
         }
 
-        public override void Load(string path)
+        public override void LoadFromXML(string path)
         {
             System.Xml.Serialization.XmlSerializer xmlFormat = new System.Xml.Serialization.XmlSerializer(typeof(CompagnieAerienne));
             using (Stream fStream = File.OpenRead(path))
@@ -50,7 +50,7 @@ namespace AeroportLibrary
             }
         }
 
-        public override void Save(string path)
+        public override void SaveInXML(string path)
         {
             System.Xml.Serialization.XmlSerializer xmlformat = new System.Xml.Serialization.XmlSerializer(typeof(CompagnieAerienne));
             Console.WriteLine(path);

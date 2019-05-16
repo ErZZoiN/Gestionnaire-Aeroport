@@ -3,12 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace AeroportLibrary
 {
-    public class VolProgramme : IComparable<VolProgramme>
+    public enum STATE { SCHEDULED, BOARDING, LASTCALL, GATE_CLOSED, AIRBORNE, FLYING };
+
+    static class StateMethods
     {
-        public enum STATE {SCHEDULED, BOARDING, LASTCALL, GATE_CLOSED, AIRBORNE, FLYING};
+
+        public static String ToString(this STATE s1)
+        {
+            switch (s1)
+            {
+                case STATE.SCHEDULED:
+                    return "SCHEDULED";
+                case STATE.BOARDING:
+                    return "BOARDING";
+                case STATE.FLYING:
+                    return "FLYING";
+                case STATE.GATE_CLOSED:
+                    return "GATE_CLOSED";
+                case STATE.LASTCALL:
+                    return "LASTCALL";
+                case STATE.AIRBORNE:
+                    return "AIRBORNE";
+                default:
+                    return "What?!";
+            }
+        }
+    }
+
+    public class VolProgramme : IComparable<VolProgramme>, INotifyPropertyChanged
+    {
 
         #region VARIABLE
         private VolGenerique _vol;
@@ -16,6 +43,8 @@ namespace AeroportLibrary
         private int _nombrepassager;
         private int _retard;
         private STATE _status;
+
+        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         #region PROPRIETE
@@ -23,9 +52,9 @@ namespace AeroportLibrary
         public DateTime DateDepart { get => _datedepart; set => _datedepart = value; }
         public int NombrePassager { get => _nombrepassager; set => _nombrepassager = value; }
         public DateTime DateArrivee { get => DateDepart.Add(Vol.Duree); }
-        public int Retard { get => _retard; set => _retard = value; }
+        public int Retard { get => _retard; set { _retard = value; OnPropertyChanged("retard"); } }
         public STATE Status { get => _status; }
-        private STATE setStatus { set => _status = value; }
+        private STATE setStatus { set { _status = value; OnPropertyChanged("status");} }
 
         public bool IsRetarded { get
             {
@@ -87,6 +116,15 @@ namespace AeroportLibrary
             else
                 setStatus = STATE.SCHEDULED;
 
+        }
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
         }
         #endregion
     }

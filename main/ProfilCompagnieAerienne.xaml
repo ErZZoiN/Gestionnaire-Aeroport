@@ -15,6 +15,12 @@
                 <MenuItem Header="Charger"
                           Name="menuCharger"
                           Click="MenuCharger_Click"/>
+                <MenuItem Header="Import"
+                          Name="menuImport"
+                          Click="MenuImport_Click"/>
+                <MenuItem Header="Export"
+                          Name="menuExport"
+                          Click="MenuExport_Click"/>
                 <Separator/>
                 <MenuItem Header="Nouveau log"
                           Name="menuNouveauLog"
@@ -34,7 +40,8 @@
         </Menu>
         <ToolBar>
             <Button Name="toolLoadVols"
-                    Content="Charger vols génériques"/>
+                    Content="Charger vols génériques"
+                    Click="MenuImport_Click"/>
             <Button Name="editCompagnie"
                     Content="Editer la compagnie"
                     Click="EditCompagnie_Click"/>
@@ -55,17 +62,15 @@
             </ToolBar>
             <DataGrid Name="volGenerique"
                       Grid.Row="1"
-                      ItemsSource="{Binding}"
-                      AutoGenerateColumns="False"
-                      IsReadOnly="True">
+                      ItemsSource="{Binding NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                      AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Numéro de vol" FontWeight="Bold" Binding="{Binding Path=Identifiant}"/>
-                    <DataGridTextColumn Header="Départ" FontWeight="Bold" Binding="{Binding Path=AeroportDepart.Nomination}"/>
-                    <DataGridTextColumn Header="Arrivée" FontWeight="Bold" Binding="{Binding Path=AeroportArrivee.Nomination}"/>
-                    <DataGridTextColumn Header="Heure de départ" Binding="{Binding Path=HeureDepart}"/>
-                    <DataGridTextColumn Header="Heure d'arrivée" Binding="{Binding Path=AffichageArrivee}">
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Durée" Binding="{Binding Path=Duree}"/>
+                    <DataGridTextColumn Header="Numéro de vol" FontWeight="Bold" Binding="{Binding Path=Identifiant}" IsReadOnly="False"/>
+                    <DataGridTextColumn Header="Départ" FontWeight="Bold" Binding="{Binding Path=AeroportDepart.Nomination}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Arrivée" FontWeight="Bold" Binding="{Binding Path=AeroportArrivee.Nomination}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Heure de départ" Binding="{Binding Path=HeureDepart}" IsReadOnly="False"/>
+                    <DataGridTextColumn Header="Heure d'arrivée" Binding="{Binding Path=AffichageArrivee}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Durée" Binding="{Binding Path=Duree}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
             <Button Grid.Column="1"
@@ -110,8 +115,6 @@
                         Grid.Column="2"
                         Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <!--<Button Name="progRetarder"
-                        Content="TODO : Retarder"/>-->
                 <Button Name="progSupprimer"
                         Content="Supprimer"
                         Click="ProgSupprimer_Click"/>

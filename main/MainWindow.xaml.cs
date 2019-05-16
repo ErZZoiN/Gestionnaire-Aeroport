@@ -66,7 +66,7 @@ namespace main
 
                                 try
                                 {
-                                    comp.Load((string)Manager.Mykey.GetValue("Workspace") + "\\" + Manager.Code + "Compagnie.xml");
+                                    comp.LoadFromXML((string)Manager.Mykey.GetValue("Workspace") + "\\" + Manager.Code + "Compagnie.xml");
                                 }
                                 catch (FileNotFoundException)
                                 {
@@ -90,7 +90,7 @@ namespace main
 
                                 try
                                 {
-                                    comp.Load((string)Manager.Mykey.GetValue("Workspace") + "\\" + Manager.Code + "Aeroport.xml");
+                                    comp.LoadFromXML((string)Manager.Mykey.GetValue("Workspace") + "\\" + Manager.Code + "Aeroport.xml");
                                 }
                                 catch (FileNotFoundException)
                                 {

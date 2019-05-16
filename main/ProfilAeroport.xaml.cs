@@ -31,7 +31,7 @@ namespace main
 
             try
             {
-                Monaeroport.Load(Manager.Datapath + "\\" + Manager.Code + "Aeroport.xml");
+                Monaeroport.LoadFromXML(Manager.Datapath + "\\" + Manager.Code + "Aeroport.xml");
             }
             catch (FileNotFoundException)
             {
@@ -40,7 +40,7 @@ namespace main
 
             try
             {
-                Volprogcol.Load(Manager.Datapath + "\\" + "Volprog.xml");
+                Volprogcol.LoadFromXML(Manager.Datapath + "\\" + "Volprog.xml");
                 Volprogcol.Sort();
                 foreach (VolProgramme v in Volprogcol)
                 {
@@ -64,12 +64,12 @@ namespace main
 
         private void ProfilAeroport_Closed(object sender, System.EventArgs e)
         {
-            Monaeroport.Save(Manager.Datapath + "\\" + Monaeroport.Code + "Compagnie.xml");
+            Monaeroport.SaveInXML(Manager.Datapath + "\\" + Monaeroport.Code + "Compagnie.xml");
             foreach (VolProgramme v in Volprogaffiche)
             {
                 Volprogcol.Add(v);
             }
-            Volprogcol.Save(Manager.Datapath + "\\" + "Volprog.xml");
+            Volprogcol.SaveInXML(Manager.Datapath + "\\" + "Volprog.xml");
         }
 
         #region PROPRIETE
