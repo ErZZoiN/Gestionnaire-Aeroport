@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:main"
         mc:Ignorable="d"
-        Title="ProfilCompagnieAerienne" Height="450" Width="1200">
+        Title="ProfilCompagnieAerienne" Height="420" Width="1300">
     <StackPanel>
         <Menu>
             <MenuItem Header="Fichier">
@@ -70,7 +70,14 @@
                     <DataGridTextColumn Header="Arrivée" FontWeight="Bold" Binding="{Binding Path=AeroportArrivee.Nomination}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Heure de départ" Binding="{Binding Path=HeureDepart}" IsReadOnly="False"/>
                     <DataGridTextColumn Header="Heure d'arrivée" Binding="{Binding Path=AffichageArrivee}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Durée" Binding="{Binding Path=Duree}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Durée" IsReadOnly="True">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding StringFormat="{}{0:00}:{1:00;00}">
+                                <Binding Path="Duree.Hours"/>
+                                <Binding Path="Duree.Minutes"/>
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
             <Button Grid.Column="1"
@@ -102,13 +109,26 @@
             <DataGrid Name="volProgramme"
                       Grid.Column="2"
                       Grid.Row="1"
-                      ItemsSource="{Binding}"
+                      ItemsSource="{Binding NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
                       AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Vol" Binding="{Binding Path=Vol.Identifiant}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Départ" Binding="{Binding Path=Vol.AeroportDepart.Nomination}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Arrivée" Binding="{Binding Path=Vol.AeroportArrivee.Nomination}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Date de départ" Binding="{Binding Path=DateDepart, StringFormat=\{0:dd/MM/yy\}}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Heure de départ" Binding="{Binding Path=Vol.HeureDepart}" IsReadOnly="True"/>
                     <DataGridTextColumn Header="Nombre de passager" Binding="{Binding Path=NombrePassager}" IsReadOnly="False"/>
-                    <DataGridTextColumn Header="Retard" Binding="{Binding Path=Retard}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Retard" Binding="{Binding Path=Retard}" IsReadOnly="True">
+                        <DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsRetarded}" Value="true">
+                                        <Setter Property="Background" Value="Red"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>
+                    </DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>
             <StackPanel Grid.Row="2"

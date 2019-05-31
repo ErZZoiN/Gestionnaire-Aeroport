@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace AeroportLibrary
 {
-    public class CompagnieAerienne : Profil
+    public class CompagnieAerienne : Profil, IPersistent
     {
         #region VARIABLES
         private string _nom;

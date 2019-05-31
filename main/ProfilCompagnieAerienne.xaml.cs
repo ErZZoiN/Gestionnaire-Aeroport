@@ -15,8 +15,8 @@ namespace main
     {
         #region VARIABLE
         private CompagnieAerienne _compagnie;
-        private ListeVols<VolGenerique> _volgencol;
-        private ListeVols<VolProgramme> _volprogcol;
+        private ObservableSortableSerializableList<VolGenerique> _volgencol;
+        private ObservableSortableSerializableList<VolProgramme> _volprogcol;
         private ObservableCollection<VolProgramme> _volprogaffiche;
         private FlightAndAirportManager _manager;
         private string _workspace;
@@ -28,8 +28,8 @@ namespace main
             Workspace = Manager.Workspace;
             Compagnie = new CompagnieAerienne();
 
-            Volgencol = new ListeVols<VolGenerique>();
-            Volprogcol = new ListeVols<VolProgramme>();
+            Volgencol = new ObservableSortableSerializableList<VolGenerique>();
+            Volprogcol = new ObservableSortableSerializableList<VolProgramme>();
             Volprogaffiche = new ObservableCollection<VolProgramme>();
             InitializeComponent();
             volProgramme.DataContext = Volprogaffiche;
@@ -71,15 +71,20 @@ namespace main
             }
             catch (FileNotFoundException) { }
 
-            volGenerique.ItemsSource = Volgencol;
+            Volgencol.CollectionChanged += Volgencol_CollectionChanged;
 
             Closed += ProfilCompagnieAerienne_Closed;
         }
 
+        private void Volgencol_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            volGenerique.Items.Refresh();
+        }
+
         #region PROPRIETE
         public CompagnieAerienne Compagnie { get => _compagnie; set => _compagnie = value; }
-        public ListeVols<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
-        public ListeVols<VolGenerique> Volgencol { get => _volgencol; set => _volgencol = value; }
+        public ObservableSortableSerializableList<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
+        public ObservableSortableSerializableList<VolGenerique> Volgencol { get => _volgencol; set => _volgencol = value; }
         public string Workspace { get => _workspace; set => _workspace = value; }
         public FlightAndAirportManager Manager { get => _manager; set => _manager = value; }
         public ObservableCollection<VolProgramme> Volprogaffiche { get => _volprogaffiche; set => _volprogaffiche = value; }
@@ -185,6 +190,7 @@ namespace main
 
         private void MenuImport_Click(object sender, RoutedEventArgs e)
         {
+
             OpenFileDialog dialog = new OpenFileDialog
             {
                 InitialDirectory = Workspace

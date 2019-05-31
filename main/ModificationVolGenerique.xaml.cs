@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,11 +25,11 @@ namespace main
         private bool _ajout;
         private ProfilCompagnieAerienne _fenetreprincipale;
         private VolGenerique _vol;
-        private ObservableCollection<Aeroport> _listeAeroportObs = new ObservableCollection<Aeroport>();
+        private ObservableSortableSerializableList<Aeroport> _listeAeroportObs = new ObservableSortableSerializableList<Aeroport>();
 
         public bool Ajout { get => _ajout; set => _ajout = value; }
         public ProfilCompagnieAerienne Fenetreprincipale { get => _fenetreprincipale; set => _fenetreprincipale = value; }
-        public ObservableCollection<Aeroport> ListeAeroportObs { get => _listeAeroportObs; set => _listeAeroportObs = value; }
+        public ObservableSortableSerializableList<Aeroport> ListeAeroportObs { get => _listeAeroportObs; set => _listeAeroportObs = value; }
         public VolGenerique Vol { get => _vol; set => _vol = value; }
 
         public ModificationVolGenerique(ProfilCompagnieAerienne win)
@@ -36,8 +37,15 @@ namespace main
             Ajout = true;
             Vol = new VolGenerique();
             Fenetreprincipale = win;
-            foreach (Aeroport a in Aeroport.LISTEAEROPORT)
-                ListeAeroportObs.Add(a);
+            try
+            {
+                ListeAeroportObs.LoadFromXML(win.Manager.Datapath + "/" + "listeAeroport.xml");
+            }
+            catch (FileNotFoundException ex)
+            {
+                foreach (Aeroport a in Aeroport.LISTEAEROPORT)
+                    ListeAeroportObs.Add(a);
+            }
             InitializeComponent();
             code.Content = win.Compagnie.Code;
             numero.IsReadOnly = false;

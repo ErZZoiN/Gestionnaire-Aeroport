@@ -29,11 +29,13 @@
                   AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Vol" Binding="{Binding Path=Vol.Identifiant}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Départ" Binding="{Binding Path=Vol.AeroportDepart.Nomination}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Arrivée" Binding="{Binding Path=Vol.AeroportArrivee.Nomination}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Nombre de passager" Binding="{Binding Path=NombrePassager}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Depart" Binding="{Binding Path=DateDepart}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Depart" Binding="{Binding Path=DateDepart, StringFormat=\{0:dd/MM/yy\}}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Heure de départ" Binding="{Binding Path=Vol.HeureDepart}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Retard" Binding="{Binding Path=Retard}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Statut" Binding="{Binding Path=Status}" IsReadOnly="True"/>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Statut" IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Path=Status}" Background="{Binding Path=Status, Converter={StaticResource Converteur}}"/>

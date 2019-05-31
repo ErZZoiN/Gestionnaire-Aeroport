@@ -26,15 +26,20 @@ namespace AeroportLibrary
         public TimeSpan HeureArrivee { get => _heurearrivee; set => _heurearrivee = value; }
 
         [XmlIgnore]
-        public TimeSpan HeureDepart { get => _heuredepart; set { _heuredepart = value; OnPropertyChanged("heuredep"); } }
+        public TimeSpan HeureDepart { get => _heuredepart; set { _heuredepart = value; OnPropertyChanged("HeureDepart"); } }
 
         public Aeroport AeroportArrivee { get => _aeroportarrivee; set => _aeroportarrivee = value; }
         public Aeroport AeroportDepart { get => _aeroportdepart; set => _aeroportdepart = value; }
         public CompagnieAerienne Compagnie { get => _compagnie; set => _compagnie = value; }
-        public int Numero { get => _numero; set { _numero = value; OnPropertyChanged("numero"); } }
-        public string Identifiant { get => Compagnie.Code.ToString() + Numero.ToString(); }
+        public int Numero { get => _numero; set { _numero = value; OnPropertyChanged("Numero"); } }
+        public string Identifiant { get => Compagnie.Code.ToString() + Numero.ToString();
+            set
+            {
+                Numero = Int32.Parse(value.Substring(2));
+            }
+        }
         public TimeSpan Duree { get
-                { TimeSpan tmp = new TimeSpan((AeroportDepart.Pays.FuseauGMT - AeroportArrivee.Pays.FuseauGMT), 0, 0);
+                { TimeSpan tmp = new TimeSpan((AeroportDepart.PaysLocal.FuseauGMT - AeroportArrivee.PaysLocal.FuseauGMT), 0, 0);
                 if (HeureDepart < HeureArrivee)
                     return (HeureArrivee - HeureDepart) - tmp;
                 else

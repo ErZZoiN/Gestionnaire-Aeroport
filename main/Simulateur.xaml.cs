@@ -30,8 +30,8 @@ namespace main
         private DateTime _currenttime;
         private Aeroport _monaeroport;
         private FlightAndAirportManager _manager;
-        private ListeVols<VolProgramme> _volprogcol;
-        private ListeVols<VolProgramme> _volprogaffiche;
+        private ObservableSortableSerializableList<VolProgramme> _volprogcol;
+        private ObservableSortableSerializableList<VolProgramme> _volprogaffiche;
         private Timer _ticker;
         static int nbrtick=0;
         #endregion
@@ -45,8 +45,8 @@ namespace main
             InitializeComponent();
 
             Monaeroport = new Aeroport();
-            Volprogcol = new ListeVols<VolProgramme>();
-            Volprogaffiche = new ListeVols<VolProgramme>();
+            Volprogcol = new ObservableSortableSerializableList<VolProgramme>();
+            Volprogaffiche = new ObservableSortableSerializableList<VolProgramme>();
 
             try
             {
@@ -127,8 +127,8 @@ namespace main
         public int Duree { get => _duree; set => _duree = value; }
         public int Vitesse { get => _vitesse; set => _vitesse = value; }
         public DateTime Debut { get => _debut; set => _debut = value; }
-        public ListeVols<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
-        public ListeVols<VolProgramme> Volprogaffiche { get => _volprogaffiche; set => _volprogaffiche = value; }
+        public ObservableSortableSerializableList<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
+        public ObservableSortableSerializableList<VolProgramme> Volprogaffiche { get => _volprogaffiche; set => _volprogaffiche = value; }
         public FlightAndAirportManager Manager { get => _manager; set => _manager = value; }
         public Aeroport Monaeroport { get => _monaeroport; set => _monaeroport = value; }
         public Timer Ticker { get => _ticker; set => _ticker = value; }

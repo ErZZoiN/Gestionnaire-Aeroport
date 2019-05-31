@@ -42,7 +42,7 @@ namespace main
             InitializeComponent();
             Title = a.Nomination;
             nom.Content = a.Nomination;
-            localisation.Content = a.Ville + " " + a.Pays.Nom;
+            localisation.Content = a.Ville + " " + a.PaysLocal.Nom;
             code.Content = a.Code;
         }
     }

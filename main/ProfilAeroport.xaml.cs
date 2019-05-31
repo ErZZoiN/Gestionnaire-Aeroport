@@ -15,14 +15,14 @@ namespace main
         #region VARIABLES
         private Aeroport _monaeroport;
         private FlightAndAirportManager _manager;
-        private ListeVols<VolProgramme> _volprogcol;
+        private ObservableSortableSerializableList<VolProgramme> _volprogcol;
         private ObservableCollection<VolProgramme> _volprogaffiche;
         private ObservableCollection<VolProgramme> _volprogconcerne;
         #endregion
         public ProfilAeroport(FlightAndAirportManager m)
         {
             Manager = m;
-            Volprogcol = new ListeVols<VolProgramme>();
+            Volprogcol = new ObservableSortableSerializableList<VolProgramme>();
             Volprogaffiche = new ObservableCollection<VolProgramme>();
             Volprogconcerne = new ObservableCollection<VolProgramme>();
             Monaeroport = new Aeroport();
@@ -74,7 +74,7 @@ namespace main
 
         #region PROPRIETE
         public FlightAndAirportManager Manager { get => _manager; set => _manager = value; }
-        public ListeVols<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
+        public ObservableSortableSerializableList<VolProgramme> Volprogcol { get => _volprogcol; set => _volprogcol = value; }
         public ObservableCollection<VolProgramme> Volprogaffiche { get => _volprogaffiche; set => _volprogaffiche = value; }
         public Aeroport Monaeroport { get => _monaeroport; set => _monaeroport = value; }
         public ObservableCollection<VolProgramme> Volprogconcerne { get => _volprogconcerne; set => _volprogconcerne = value; }

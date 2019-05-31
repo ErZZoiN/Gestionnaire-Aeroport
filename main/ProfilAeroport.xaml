@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:main"
         mc:Ignorable="d"
-        Title="ProfilAeroport" Height="520.304" Width="571.659">
+        Title="ProfilAeroport" Height="500" Width="600">
     <StackPanel>
         <Menu>
             <MenuItem Header="Fichier">
@@ -30,22 +30,20 @@
                         SelectedDateChanged="DateVols_SelectedDateChanged"/>
         </ToolBar>
         <DataGrid Name="volProgramme"
-                      ItemsSource="{Binding}"
+                      ItemsSource="{Binding NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
                       AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Vol" Binding="{Binding Path=Vol.Identifiant}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Départ" Binding="{Binding Path=Vol.AeroportDepart.Nomination}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Arrivée" Binding="{Binding Path=Vol.AeroportArrivee.Nomination}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Date de départ" Binding="{Binding Path=DateDepart, StringFormat=\{0:dd/MM/yy\}}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Heure de départ" Binding="{Binding Path=Vol.HeureDepart}" IsReadOnly="False"/>
                 <DataGridTextColumn Header="Nombre de passager" Binding="{Binding Path=NombrePassager}" IsReadOnly="False"/>
                 <DataGridTextColumn Header="Retard" Binding="{Binding Path=Retard}" IsReadOnly="True">
                     <DataGridTextColumn.CellStyle>
                         <Style TargetType="DataGridCell">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=IsRetarded}" Value="false">
-                                    <Setter Property="Content" Value="ON TIME"/>
-                                    <Setter Property="Background" Value="White"/>
-                                </DataTrigger>
                                 <DataTrigger Binding="{Binding Path=IsRetarded}" Value="true">
-                                    <Setter Property="Content" Value="{Binding Path=Retard}"/>
                                     <Setter Property="Background" Value="Red"/>
                                 </DataTrigger>
                             </Style.Triggers>

@@ -92,6 +92,9 @@ namespace AeroportLibrary
         }
         public int CompareTo(VolProgramme v)
         {
+            DateDepart = new DateTime(DateDepart.Year, DateDepart.Month, DateDepart.Day);
+            v.DateDepart = new DateTime(v.DateDepart.Year, v.DateDepart.Month, v.DateDepart.Day);
+
             if (DateDepart.CompareTo(v.DateDepart) == 0)
             {
                 return Vol.HeureDepart.CompareTo(v.Vol.HeureDepart);
@@ -101,20 +104,24 @@ namespace AeroportLibrary
 
         public void setState(DateTime tempsCourant)
         {
-            long diffTicks = DateDepart.Ticks - tempsCourant.Ticks;
-            TimeSpan diff = new TimeSpan(diffTicks);
-            if (diff.TotalMinutes < -5)
-                setStatus = STATE.FLYING;
-            else if (diff.TotalMinutes < 0)
-                setStatus = STATE.AIRBORNE;
-            else if (diff.TotalMinutes < 5)
-                setStatus = STATE.GATE_CLOSED;
-            else if (diff.TotalMinutes < 10)
-                setStatus = STATE.LASTCALL;
-            else if (diff.TotalMinutes < 30)
-                setStatus = STATE.BOARDING;
-            else
-                setStatus = STATE.SCHEDULED;
+            if (DateDepart.Year >= tempsCourant.Year && DateDepart.Month >= tempsCourant.Month && DateDepart.Day >= tempsCourant.Day)
+            {
+                Console.WriteLine(Retard);
+                long diffTicks = (DateDepart.Ticks + Vol.HeureDepartTicks) - tempsCourant.Ticks;
+                TimeSpan diff = new TimeSpan(diffTicks);
+                if (diff.TotalMinutes < -(5+Retard))
+                    setStatus = STATE.FLYING;
+                else if (diff.TotalMinutes < -Retard)
+                    setStatus = STATE.AIRBORNE;
+                else if (diff.TotalMinutes < 5-Retard)
+                    setStatus = STATE.GATE_CLOSED;
+                else if (diff.TotalMinutes < 10 - Retard)
+                    setStatus = STATE.LASTCALL;
+                else if (diff.TotalMinutes < 30 - Retard)
+                    setStatus = STATE.BOARDING;
+                else
+                    setStatus = STATE.SCHEDULED;
+            }
 
         }
 

@@ -113,6 +113,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AjoutAeroport.xaml.cs">
+      <DependentUpon>AjoutAeroport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectionSimulateur.xaml.cs">
       <DependentUpon>SelectionSimulateur.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
       <DependentUpon>Simulateur.xaml</DependentUpon>
     </Compile>
     <Page Include="AboutMe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AjoutAeroport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

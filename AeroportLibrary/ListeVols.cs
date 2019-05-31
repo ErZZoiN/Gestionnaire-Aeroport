@@ -9,7 +9,7 @@ using ServiceStack.Text;
 
 namespace AeroportLibrary
 {
-    public class ListeVols<T> : ObservableCollection<T>, IPersistent
+    public class ObservableSortableSerializableList<T> : ObservableCollection<T>, IPersistent
     {
         public void LoadFromXML(string path)
         {
@@ -45,9 +45,11 @@ namespace AeroportLibrary
             using (Stream fStream = File.OpenRead(filename))
             {
                 StreamReader sr = new StreamReader(fStream);
+                sr.ReadLine();
                 while (!sr.EndOfStream)
                 {
                     tmp = sr.ReadLine();
+                    Console.WriteLine(tmp);
                     Add(CsvSerializer.DeserializeFromString<T>(tmp));
                 }
             }

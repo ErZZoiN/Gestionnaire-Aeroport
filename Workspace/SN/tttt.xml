@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<ArrayOfVolGenerique xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <VolGenerique>
+    <AeroportArrivee>
+      <Code>BER</Code>
+      <Ville>Berlin</Ville>
+      <PaysLocal>
+        <Nom>Allemagne</Nom>
+        <Code>
+          <char>71</char>
+          <char>69</char>
+          <char>82</char>
+        </Code>
+        <FuseauGMT>2</FuseauGMT>
+      </PaysLocal>
+    </AeroportArrivee>
+    <AeroportDepart>
+      <Code>ATH</Code>
+      <Ville>athène</Ville>
+      <PaysLocal>
+        <Nom>grèce</Nom>
+        <Code />
+        <FuseauGMT>3</FuseauGMT>
+      </PaysLocal>
+    </AeroportDepart>
+    <Compagnie>
+      <Code>SN</Code>
+      <Nom>Brussels Airlines</Nom>
+      <Localisation>Bruxelles</Localisation>
+      <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\SN\Logo.png</Image>
+    </Compagnie>
+    <Numero>1111</Numero>
+    <Identifiant>SN1111</Identifiant>
+    <HeureArrivee>144560000000</HeureArrivee>
+    <HeureDepart>54540000000</HeureDepart>
+  </VolGenerique>
+</ArrayOfVolGenerique>

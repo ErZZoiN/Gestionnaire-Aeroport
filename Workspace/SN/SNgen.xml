@@ -34,8 +34,9 @@
       <Image />
     </Compagnie>
     <Numero>5896</Numero>
+    <Identifiant>SN5896</Identifiant>
     <HeureArrivee>631240000000</HeureArrivee>
-    <HeureDepart>223190000000</HeureDepart>
+    <HeureDepart>187190000000</HeureDepart>
   </VolGenerique>
   <VolGenerique>
     <AeroportArrivee>
@@ -70,7 +71,8 @@
       <Localisation>Bruxelles</Localisation>
       <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\SN\Logo.png</Image>
     </Compagnie>
-    <Numero>1004</Numero>
+    <Numero>1055</Numero>
+    <Identifiant>SN1055</Identifiant>
     <HeureArrivee>819240000000</HeureArrivee>
     <HeureDepart>365530000000</HeureDepart>
   </VolGenerique>
@@ -108,6 +110,7 @@
       <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\SN\Logo.png</Image>
     </Compagnie>
     <Numero>1001</Numero>
+    <Identifiant>SN1001</Identifiant>
     <HeureArrivee>478000000000</HeureArrivee>
     <HeureDepart>385580000000</HeureDepart>
   </VolGenerique>
@@ -145,6 +148,7 @@
       <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\SN\Logo.png</Image>
     </Compagnie>
     <Numero>1002</Numero>
+    <Identifiant>SN1002</Identifiant>
     <HeureArrivee>414120000000</HeureArrivee>
     <HeureDepart>385910000000</HeureDepart>
   </VolGenerique>
@@ -182,6 +186,7 @@
       <Image>C:\Users\mrpar\source\repos\Gestionnaire Aeroport\Workspace\SN\Logo.png</Image>
     </Compagnie>
     <Numero>1003</Numero>
+    <Identifiant>SN1003</Identifiant>
     <HeureArrivee>497230000000</HeureArrivee>
     <HeureDepart>397550000000</HeureDepart>
   </VolGenerique>
@@ -219,6 +224,7 @@
       <Image />
     </Compagnie>
     <Numero>1212</Numero>
+    <Identifiant>SN1212</Identifiant>
     <HeureArrivee>608210000000</HeureArrivee>
     <HeureDepart>558980000000</HeureDepart>
   </VolGenerique>

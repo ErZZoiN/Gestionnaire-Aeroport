@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AeroportLibrary
 {
-    public class Aeroport : Profil
+    public class Aeroport : Profil, IPersistent
     {
         #region VARIABLE
         private string _ville;
@@ -17,7 +17,7 @@ namespace AeroportLibrary
 
         #region PROPRIETE
         public string Ville { get => _ville; set => _ville = value; }
-        public Pays Pays { get => _pays; set => _pays = value; }
+        public Pays PaysLocal { get => _pays; set => _pays = value; }
         public string Nomination { get => Code + " " + Ville; }
         #endregion
 
@@ -25,7 +25,7 @@ namespace AeroportLibrary
         {
             Code = code;
             Ville = ville;
-            Pays = pays;
+            PaysLocal = pays;
         }
 
         public Aeroport()
@@ -53,7 +53,7 @@ namespace AeroportLibrary
             {
                 Aeroport tmp = (Aeroport)xmlFormat.Deserialize(fStream);
                 Ville = tmp.Ville;
-                Pays = tmp.Pays;
+                PaysLocal = tmp.PaysLocal;
                 Code = tmp.Code;
             }
         }

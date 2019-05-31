@@ -79,5 +79,10 @@ namespace main
 
             Valider(Manager);
         }
+
+        private void AjoutAeroport_Click(object sender, RoutedEventArgs e)
+        {
+            new AjoutAeroport(Manager).ShowDialog();
+        }
     }
 }
